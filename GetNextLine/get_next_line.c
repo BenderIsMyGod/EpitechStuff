@@ -5,38 +5,49 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan  8 21:12:35 2017 John Doe
-** Last update Tue Jan 10 09:14:50 2017 John Doe
+** Last update Wed Jan 11 09:36:23 2017 John Doe
 */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
-int		len(char *str)
+size_t		len(char *str)
 {
-  int	i;
+  size_t	i;
 
   i = 0;
-  while (str[i])
+  while ((str[i]))
     i++;
   return (i);
 }
-char		*my_strcat(char *dest, char *src)
+void    	my_strcpy(char *dest, char *src, int k)
+{
+  int			i;
+
+  i = 0;
+  *dest = '\0';
+  if (k < 2)
+    *src = '\0';
+  while (src[i] != '\0')
+    {
+      dest[i] = src[i];
+      i++;
+    }
+  dest[i] = '\0';
+}
+char		*my_strcat(char *dest, char *src, int k)
 {
   int		i;
   int		j;
   char	*buffer;
 
   i = 0;
-  if ((buffer = malloc(sizeof(*buffer) * len(dest) + len(src) + 1)) == NULL)
+  if ((buffer = malloc(sizeof(*buffer) * len(dest) + len(src) * k + 1)) == NULL)
     return (NULL);
-  while (dest[i])
-    {
-      buffer[i] = dest[i];
-      i++;
-    }
-  buffer[i] = '\0';
-  i = 0;
-  j = len(buffer);
-  while (src[i])
+  my_strcpy(buffer, dest, k);
+  j = len(dest);
+  free(dest);
+  while ((src[i]))
     {
       buffer[j + i] = src[i];
       i++;
@@ -44,30 +55,39 @@ char		*my_strcat(char *dest, char *src)
   buffer[j + i] = '\0';
   return (buffer);
 }
+void					remove_fckingbackslh(char *buffer, int j)
+{
+  int					i;
+
+  i = 0;
+  j = 0;
+  while ((buffer[i] != '\n'))
+    i++;
+  buffer[i] = '\0';
+}
 char					*get_next_line(const int fd)
 {
-  char 				*buffer;
-  static char	*line;
+  static char *buffer = NULL;
+  char				*line;
   int					j, rd;
-  static int i = 0;
+  static int 	i = 0;
 
   j = 0;
   if ((buffer = malloc(sizeof(*buffer) * READ_SIZE + 1)) == NULL)
     return (NULL);
-  if ((line = malloc(sizeof(*buffer) * READ_SIZE * i + 1)) == NULL)
+  if ((line = malloc(sizeof(*buffer) * READ_SIZE * (i + 1))) == NULL)
     return (NULL);
   while ((rd = read(fd, buffer, READ_SIZE)))
     {
       buffer[rd] = '\0';
-      if (i == 0)
-	line = buffer;
-      else
-	line = my_strcat(line, buffer);
-      while ((line[j]) && j++)
-	if (line[j] == '\n')
-	    return (line);
-	  i++;
-	}
-  free(buffer);
+      line = my_strcat(line, buffer, i = i + 1);
+      while ((line[j]))
+	if (line[j++] == '\n')
+	    {
+	      i = j = 0;
+	      remove_fckingbackslh(line, i);
+	      return (line);
+	    }
+    }
   return (NULL);
 }

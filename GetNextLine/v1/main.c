@@ -5,10 +5,14 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan  8 22:31:57 2017 John Doe
-** Last update Sun Jan  8 23:47:54 2017 John Doe
+** Last update Wed Jan 11 09:31:21 2017 John Doe
 */
 
 #include "../get_next_line.h"
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 void	print(char *str);
 
@@ -23,12 +27,17 @@ void	print(char *str)
 int		main(int ac, char **av)
 {
   char	*s;
+  int		fd;
 
-  while ((s = get_next_line(0)))
+  if ((!av[1]))
     {
-      print(s);
-      print("\n");
-      free(s);
+      while ((s = get_next_line(0)))
+	{
+	  // print("resultat :[");
+	  print(s);
+	  print("\n");
+	  free(s);
+	}
+      return (0);
     }
-  return (0);
 }
