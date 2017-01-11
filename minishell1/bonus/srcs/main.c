@@ -27,24 +27,16 @@ char			**set_env(char **environ)
 
 int							main(int ac, char **av, char **environ)
 {
-  if ((!av[1]))
-    if ((environ))
+  av = NULL;
+  signal(SIGINT, SIG_IGN);
+  pprint(INTRO, 1);
+  if (!getuid())
+    pprint(ROOT_ERR, 1);
+  environ = set_env(environ);
+  while (ac)
 	{
-	  signal(SIGINT, SIG_IGN);
-	  pprint(INTRO, 1);
-	  pprint(PROMPT, 1);
-	  if (!getuid())
-	    pprint(ROOT_ERR, 1);
-	  environ = set_env(environ);
-	  while (ac)
-	    {
-	      loop(environ);
-	  return (0);
-	    }
+	  loop(environ);
 	  return (0);
 	}
-
-  if ((execve(av[1], av, environ)))
-    errors("No such file or directory");
-  return (84);
+      return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Mon Jan  9 09:54:38 2017 John Doe
-** Last update Wed Jan 11 10:40:49 2017 John Doe
+** Last update Tue Jan 10 08:06:49 2017 John Doe
 */
 
 #include "pshell.h"
@@ -27,6 +27,5 @@ char		**change_path(char **environ, char *path)
   i = parse_env(environ, "PWD=");
   environ[i] = NULL;
   environ[i] = my_strcat("PWD=", getcwd(buffer, BUFFERSIZE));
-  free(path);
   return (environ);
 }

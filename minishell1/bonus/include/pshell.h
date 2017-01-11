@@ -33,16 +33,17 @@
 #include <signal.h>
 #include <string.h>
 #include <dirent.h>
-
+/*
+** Readline autocomplete header
+** for bonus
+*/
+#include <readline/readline.h>
+#include <readline/history.h>
+/*
+** My headers :
+*/
 #include "strtowordtab.h"
-#include "get_next_line.h"
 #include "msg.h"
-
-
-typedef struct s_data {
-  char				buffer[BUFFERSIZE];
-  char 				*argv[];
-}							t_data;
 
 void			pprint(char *str, int fd);
 void			printerr(char *errmsg);
@@ -55,7 +56,7 @@ int				parse_env(char **env, char *str);
 void			loop(char **environ);
 void			exec(char **args, char **environ, char *buff);
 void			shortcuts(char *buff);
-void			clean_exit(char *buff);
+void			clean_exit();
 void			free_that_bfr(char **bfr);
 
 char			*stradd(char *src, char *next);

@@ -66,25 +66,32 @@ void		 		exec(char **args, char **environ, char *buff)
 		{
 		  pprint(args[0], 2);
 		  pprint(": command not found\n", 2);
-		  *buff = '\0';
+		  free(buff);
 		}
 }
 
 void		loop(char **environ)
 {
-  char		*buff;
+  char		*buffer;
   char		**args;
   char		delim;
+  ssize_t	rd;
 
+  rd = 0;
   args = NULL;
   delim = ' ';
-  while ((buff = get_next_line(0)))
+  buffer = NULL;
+  while ((buffer = readline(PROMPT)))
     {
-      shortcuts(buff);
-      if (buff[0] == 'c' && buff[1] == 'd')
-	environ = change_path(environ, buff);
-      args = strtowordtab(buff, delim);
-      exec(args, environ, buff);
-      pprint(PROMPT, 1);
+      buffer[len(buffer) + 1] = '\0';
+      shortcuts(buffer);
+      if (buffer[0] == 'c' && buffer[1] == 'd')
+	{
+	  environ = change_path(environ, buffer);
+	  *buffer = '\0';
+	}
+      args = strtowordtab(buffer, delim);
+      exec(args, environ, buffer);
+      free(buffer);
     }
 }

@@ -12,12 +12,12 @@
 
 void		shortcuts(char *buff)
 {
-  if ((buff[0] == 'q' && !buff[1]) || buff[0] == 27)
-    clean_exit(buff);
+  if ((buff[0] == 'q' && !buff[1]) || *buff == EOF||buff[0] == 27)
+    clean_exit();
   if (buff[0] == 'h' && !buff[1])
     help(HELP, buff);
   if (buff[0] == 'l' && !buff[1])
-    license(LICENSE, buff);
+    license(LICENSE2, buff);
   if ((my_strncmp("exit", buff, 5)))
-    clean_exit(buff);
+    clean_exit();
 }

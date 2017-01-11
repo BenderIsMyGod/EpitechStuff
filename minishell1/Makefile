@@ -5,7 +5,7 @@
 ## Login   <login_x@epitech.eu>
 ##
 ## Started on  Thu Dec 22 09:20:25 2016 John Doe
-## Last update Mon Jan  9 10:09:02 2017 John Doe
+## Last update Wed Jan 11 10:47:08 2017 John Doe
 ##
 
 CC		= gcc
@@ -15,12 +15,13 @@ RM		= rm -rf
 CFLAGS		+= -W -Werror -Wall -Wextra -std=gnu99 -D_POSIX_C_SOURCE=199309L
 CFLAGS		+= -I./include/
 
-SRCS		= srcs/base.c					\
-		  		srcs/msg.c					\
-		  		srcs/shortcuts.c		\
-		  		srcs/strtowordtab.c	\
-					srcs/built_in.c			\
-		  		srcs/pshellv2.c			\
+SRCS		= srcs/base.c														\
+		  		srcs/msg.c														\
+		  		srcs/shortcuts.c											\
+		  		srcs/strtowordtab.c										\
+					srcs/GNLgalagalarpz/get_next_line.c		\
+					srcs/built_in.c												\
+		  		srcs/pshellv2.c												\
 		  		srcs/main.c
 
 
