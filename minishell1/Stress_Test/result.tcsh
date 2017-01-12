@@ -135,6 +135,6 @@ lrwxrwxrwx 1 root root       3 déc.  11 13:54 vi -> vim
 lrwxrwxrwx 1 root root      17 oct.  26 15:54 ypdomainname -> /usr/bin/hostname
 lrwxrwxrwx 1 root root      13 oct.  26 15:56 zcat -> /usr/bin/zcat
 lrwxrwxrwx 1 root root      12 déc.  16 13:17 zsh -> /usr/bin/zsh
-/home/bender/Repo/PSU_2016_minishell1
+/home/bender/Repo/PSU_2016_minishell1/Stress_Test
 /bin
-/home/bender/Repo/PSU_2016_minishell1
+/home/bender/Repo/PSU_2016_minishell1/Stress_Test

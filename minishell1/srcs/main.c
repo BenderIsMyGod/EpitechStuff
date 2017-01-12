@@ -9,17 +9,18 @@
 */
 
 #include "pshell.h"
+#include <errno.h>
 
-char			**set_env(char **environ)
+char			**set_env(char **environ, char  *arg, char *value)
 {
   int			i;
 
-  i = 0;
-  i = parse_env(environ, "SHELL");
+
+  i = parse_env(environ, arg);
   if ((i))
     {
-      environ[i] = NAME;
-	  return (environ);
+      environ[i] = value;
+      return (environ);
     }
   errors("No such environnement");
   return (NULL);
@@ -31,11 +32,12 @@ int							main(int ac, char **av, char **environ)
     if ((environ))
 	{
 	  signal(SIGINT, SIG_IGN);
-	  pprint(INTRO, 1);
-	  pprint(PROMPT, 1);
+	  if ((isatty(0)))
+	    pprint(PROMPT, 1);
 	  if (!getuid())
 	    pprint(ROOT_ERR, 1);
-	  environ = set_env(environ);
+	  environ = set_env(environ, "SHELL", NAME);
+	  environ = set_env(environ, "LS_OPT", LS);
 	  while (ac)
 	    {
 	      loop(environ);

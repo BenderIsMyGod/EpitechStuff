@@ -9,6 +9,7 @@
 */
 
 #include "pshell.h"
+#include <errno.h>
 
 int		parse_env(char **env, char *str)
 {
@@ -17,7 +18,7 @@ int		parse_env(char **env, char *str)
 
   i = 0;
   j = 0;
-  while (env[i])
+  while (env[i++])
     {
       while (env[i][j])
 	{
@@ -26,7 +27,6 @@ int		parse_env(char **env, char *str)
 	  j++;
 	}
       j = 0;
-      i++;
     }
   return (0);
 }
@@ -59,17 +59,16 @@ void		 		exec(char **args, char **environ, char *buff)
   i = 0;
   while (path[i])
     i++;
-  if ((cpid = waitpid(-1, wstatus, 0)) == -1)
+  while ((cpid = waitpid(-1, wstatus, 0)) == -1)
     while (path[j])
-	while ((exe = execve(stradd(path[j++], args[0]), args, environ)))
-	    if (exe == -1 && j == i)
-		{
-		  pprint(args[0], 2);
-		  pprint(": command not found\n", 2);
-		  *buff = '\0';
-		}
+	if ((exe = execve(stradd(path[j++], args[0]), args, environ)) && j == i)
+	    {
+	      pprint(args[0], 2);
+	      pprint(": command not found\n", 2);
+	      *buff = '\0';
+	      exit (84);
+	    }
 }
-
 void		loop(char **environ)
 {
   char		*buff;
@@ -78,13 +77,14 @@ void		loop(char **environ)
 
   args = NULL;
   delim = ' ';
-  while ((buff = get_next_line(0)))
+  while ((buff = get_next_line(STDIN_FILENO)))
     {
       shortcuts(buff);
       if (buff[0] == 'c' && buff[1] == 'd')
 	environ = change_path(environ, buff);
       args = strtowordtab(buff, delim);
       exec(args, environ, buff);
-      pprint(PROMPT, 1);
+      if ((isatty(0)))
+	pprint(PROMPT, 1);
     }
 }

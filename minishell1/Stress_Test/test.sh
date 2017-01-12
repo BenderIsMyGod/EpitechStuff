@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/csh
 echo -e "toton!!\nferme ta geule"

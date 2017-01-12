@@ -9,16 +9,12 @@
 */
 
 #ifndef READSIZE
-# define 	READSIZE	(5000)
+# define 	READSIZE	(500)
 #endif
 
 #ifndef BUFFERSIZE
 # define BUFFERSIZE (READSIZE + 1)
 # endif
-
-#ifndef CMDSIZE
-# define CMDSIZE (10000)
-#endif
 
 #ifndef PSHELL_H_
 # define PSHELL_H_
@@ -38,17 +34,11 @@
 #include "get_next_line.h"
 #include "msg.h"
 
-
-typedef struct s_data {
-  char				buffer[BUFFERSIZE];
-  char 				*argv[];
-}							t_data;
-
 void			pprint(char *str, int fd);
 void			printerr(char *errmsg);
 ssize_t		len(char *str);
 
-char			**set_env(char **environ);
+char			**set_env(char **environ, char *str, char *value);
 char			**change_path(char **environ, char *path);
 char			*set_path(char *path);
 int				parse_env(char **env, char *str);

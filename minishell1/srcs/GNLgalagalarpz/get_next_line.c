@@ -5,20 +5,11 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan  8 21:12:35 2017 John Doe
-** Last update Wed Jan 11 11:05:53 2017 John Doe
+** Last update Wed Jan 11 15:12:31 2017 John Doe
 */
 
 #include "pshell.h"
 
-// size_t		len(char *str)
-// {
-//   size_t	i;
-//
-//   i = 0;
-//   while ((str[i]))
-//     i++;
-//   return (i);
-// }
 void    	my_strcpy(char *dest, char *src, int k)
 {
   int			i;
@@ -45,13 +36,13 @@ char		*strcat_imalloc(char *dest, char *src, int k)
     return (NULL);
   my_strcpy(buffer, dest, k);
   j = len(dest);
-  free(dest);
   while ((src[i]))
     {
       buffer[j + i] = src[i];
       i++;
     }
   buffer[j + i] = '\0';
+  free(dest);
   return (buffer);
 }
 void					remove_fckingbackslh(char *buffer)
@@ -87,6 +78,7 @@ char					*get_next_line(const int fd)
 	      return (line);
 	    }
     }
-  pprint("exit", 1);
+  if ((isatty(0)))
+    pprint("exit\n", 1);
   return (NULL);
 }

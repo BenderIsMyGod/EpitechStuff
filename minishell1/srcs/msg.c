@@ -32,6 +32,6 @@ void				license(char *licencemsg, char *buff)
 void		clean_exit(char *buff)
 {
   free(buff);
-  pprint("See U!\n", 1);
+  pprint("exit\n", 1);
   _exit (0);
 }

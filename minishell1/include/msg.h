@@ -39,14 +39,15 @@ it is allowed as long as the name is changed.\n\n\e[1mDO WHAT THE FUCK YOU WANT\
 MODIFICATION \e[0m\n\n0. You just \e[1mDO WHAT THE FUCK YOU WANT TO\e[0m.\n"
 
 
-#define  	PROMPT		"\e[1mMysh >> \e[0m"
-#define	 	INTRO		"\t\t>>Mysh<<\n\t'u' for usage, 'h' for help, \n\t'l' for \
-license and 'q' to quit\n"
 #define 	HELP			"\n\tRTFM\n\nhelp yourself ;)\n"
-#define 	NAME			"SHELL=Mysh V0.0.1"
-#define		HOME			"HOME=/home/bender"
+#define   NAME      "SHELL=Mysh V0.1"
+#define		LS				"LS_OPTIONS= --color=always"
+#define		HOME			environ[parse_env(environ, "HOME")]
+#define   PATH      environ[parse_env(environ, "PATH")]
 #define   PWD 			"PWD="
 #define   OLDPWD		"OLDPWD="
+char			*buffer;
+#define   PROMPT		my_strcat(getcwd(buffer, BUFFERSIZE), "> ")
 
 #define 	ROOT_ERR	"\n\t\e[1mIt's really a bad bad idea to run this shit\n\tas\
  root! u'll be warned..(seriously it's better\n\tfor you to press 'q' now)\e[0m\
