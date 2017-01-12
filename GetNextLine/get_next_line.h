@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan  8 21:13:56 2017 John Doe
-** Last update Wed Jan 11 09:32:04 2017 John Doe
+** Last update Thu Jan 12 06:48:20 2017 John Doe
 */
 
 #ifndef READ_SIZE
@@ -18,9 +18,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char				*get_next_line(const int fd);
-char				*my_strcat(char *dest, char *src, int k);
-void    		my_strcpy(char *src, char *dest, int k);
-size_t			len(char *str);
+char						*get_next_line(const int fd);
+void						*malloc_this(char *line, size_t len);
+void    				my_strcpy(char *src, char *dest, int k);
+char						*my_strcat(char *dest, char *src, int k, ssize_t rd);
+size_t					len(char *str);
 
 #endif
