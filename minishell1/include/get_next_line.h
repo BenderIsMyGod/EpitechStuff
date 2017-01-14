@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan  8 21:13:56 2017 John Doe
-** Last update Wed Jan 11 14:29:32 2017 John Doe
+** Last update Sat Jan 14 14:46:58 2017 John Doe
 */
 
 #ifndef READ_SIZE
@@ -18,8 +18,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char				*get_next_line(const int fd);
-char				*strcat_imalloc(char *dest, char *src, int k);
-void    		my_strcpy(char *src, char *dest, int k);
+char						*get_next_line(const int fd);
 
 #endif

@@ -1,20 +1,30 @@
 ##
-## Makefile for BOOK in /home/bender/Desktop/Snippets/book/
+## Makefile for Minishell1 in /home/bender/Repo/PSU_2016_minishell1/
 ##
 ## Made by John Doe
 ## Login   <login_x@epitech.eu>
 ##
-## Started on  Thu Dec 22 09:20:25 2016 John Doe
-## Last update Wed Jan 11 10:47:08 2017 John Doe
+## Started on  Fri Jan 13 13:32:55 2017 John Doe
+## Last update Fri Jan 13 13:34:02 2017 John Doe
 ##
 
 CC		= gcc
 
 RM		= rm -rf
 
-CFLAGS		+= -W -Werror -Wall -Wextra -std=gnu99 -D_POSIX_C_SOURCE=199309L
+CFLAGS		+= -Werror -Wall -Wextra -Wpedantic -std=c99
 CFLAGS		+= -I./include/
-
+#############################################
+## The following compilations flags are based
+## on "cinglis" "c style best practice" guide
+##  => https://github.com/mcinglis/c-style <=
+#############################################
+DFLAGS		+= -Wall -Wextra -Wpedantic \
+          -Wformat=2 -Wno-unused-parameter -Wshadow \
+          -Wwrite-strings -Wstrict-prototypes -Wold-style-definition \
+          -Wredundant-decls -Wnested-externs -Wmissing-include-dirs
+DFLAGS    += -I./include/
+############################################
 SRCS		= srcs/base.c														\
 		  		srcs/msg.c														\
 		  		srcs/shortcuts.c											\
@@ -45,4 +55,4 @@ re:		fclean all
 .PHONY:		all clean fclean re
 
 debug:
-		$(CC) -g $(CFLAGS) $(SRCS) -o $(NAME)
+		$(CC) -g $(DFLAGS) $(SRCS) -o $(NAME)

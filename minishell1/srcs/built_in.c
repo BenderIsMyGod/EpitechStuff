@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Mon Jan  9 09:54:38 2017 John Doe
-** Last update Thu Jan 12 02:35:47 2017 Junior Bender
+** Last update Fri Jan 13 13:03:36 2017 Junior Bender
 */
 
 #include "pshell.h"
@@ -33,6 +33,8 @@ char		**change_path(char **environ, char *path)
   return (environ);
 }
 
+/*
+**
 int	unsetenv(const char *name, char **environ)
 {
   
@@ -56,3 +58,4 @@ int	unsetenv(const char *name, char **environ)
         }
   return 0;
 }
+*/
