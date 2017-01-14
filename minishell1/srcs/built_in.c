@@ -5,57 +5,36 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Mon Jan  9 09:54:38 2017 John Doe
-** Last update Fri Jan 13 13:03:36 2017 Junior Bender
+** Last update Sat Jan 14 17:57:58 2017 John Doe
 */
 
 #include "pshell.h"
+#include <errno.h>
 
 char		**change_path(char **environ, char *path)
 {
   int		i;
   char	*buffer;
+  char  *tmp;
 
   i = 0;
-  if ((buffer = malloc(sizeof(*buffer) * BUFFERSIZE)) == NULL)
+  if ((buffer = tmp = malloc(sizeof(*buffer) * BUFFERSIZE)) == NULL)
     errors("malloc error\n");
   i = parse_env(environ, "OLDPWD");
-  environ[i] = NULL;
+  if (path[3] == '-')
+    tmp = environ[i] + 7;
   environ[i] = my_strcat("OLDPWD=", getcwd(buffer, BUFFERSIZE));
-  i = 0;
-  if ((len(path) <= 3))
-    chdir("/home/");
-  else if ((chdir(path + 3)) == - 1)
-    pprint("No such file or directory\n", 2);
+  if ((len(path) <= 2))
+    {
+      path[0] = '\0';
+      return (environ);
+    }
+  else if (((chdir(path + 3)) == - 1) && path[3] != '-' && ((isatty(0))))
+    pprint(my_strcat(path + 3, ": Aucun fichier ou dossier de ce type.\n"), 2);
+  else  if (path[3] == '-')
+    chdir(tmp);
   i = parse_env(environ, "PWD=");
-  environ[i] = NULL;
   environ[i] = my_strcat("PWD=", getcwd(buffer, BUFFERSIZE));
   path[0] = '\0';
   return (environ);
 }
-
-/*
-**
-int	unsetenv(const char *name, char **environ)
-{
-  
-  char	**ep;
-  char  **sp;
-  size_t len;
-  
-  if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL) {
-        errno = EINVAL;
-        return -1;
-  }
-
-  len = strlen(name);
-  
-  for (ep = environ; *ep != NULL; )
-        if (strncmp(*ep, name, len) == 0 && (*ep)[len] == '=') {
-	  for (sp = ep; *sp != NULL; sp++)
-	    *sp = *(sp + 1);
-        } else {
-	  ep++;
-        }
-  return 0;
-}
-*/

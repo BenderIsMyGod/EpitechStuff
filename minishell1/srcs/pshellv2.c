@@ -61,7 +61,8 @@ void		 		exec(char **args, char **environ, char *buff)
     i++;
   while ((cpid = waitpid(-1, wstatus, 0)) == -1)
     while (path[j])
-	if ((exe = execve(stradd(path[j++], args[0]), args, environ)) && j == i)
+	if ((exe = execve(stradd(path[j++], args[0]), args, \
+			  environ)) && j == i)
 	    {
 	      pprint(args[0], 2);
 	      pprint(": command not found\n", 2);
@@ -87,4 +88,7 @@ void		loop(char **environ)
       if ((isatty(0)))
 	pprint(PROMPT, 1);
     }
+  if ((isatty(0)))
+    pprint("exit", 1);
+  free(buff);
 }
