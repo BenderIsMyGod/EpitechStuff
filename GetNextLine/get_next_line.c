@@ -1,91 +1,64 @@
 /*
-** get_next_line.c for get_next_line in /home/bender/Repo/CPE_2016_getnextline/
+** get_next_line.c for GNL in /home/bender/Repo/CPE_2016_getnextline
 **
-** Made by John Doe
-** Login   <login_x@epitech.eu>
+** Made by Junior Bender
+** Login   <bender@epitech.net>
 **
-** Started on  Sun Jan  8 21:12:35 2017 John Doe
-** Last update Thu Jan 12 06:50:29 2017 John Doe
+** posed on  Sat Jan 14 12:34:31 2017 Junior Bender
+** Last update Sat Jan 14 14:23:01 2017 John Doe
 */
 
 #include "get_next_line.h"
 
-size_t		len(char *str)
+static char	*my_strcat(char *dest, char src[READ_SIZE + 1], int count, int *pos)
 {
-  size_t	i = 0;
-
-  i = 0;
-  while ((str[i]))
-    i++;
-  return (i);
-}
-
-void					*malloc_this(char *line, size_t len)
-{
-  void				*bfr;
-
-  if ((bfr = malloc(sizeof(*line) * len + 1)) == NULL)
-    return (NULL);
-  return (bfr);
-}
-
-void    	my_strcpy(char *dest, char *src, int k)
-{
-  int			i;
-
-  i = 0;
-  *dest = '\0';
-  if (k < 2)
-    *src = '\0';
-  while (src[i] != '\0')
-    {
-      dest[i] = src[i];
-      i++;
-    }
-  dest[i] = '\0';
-}
-
-char		*my_strcat(char *dest, char *src, int k, ssize_t rd)
-{
+  char		*buffer;
+  int		k;
   int		i;
   int		j;
-  static char	*buffer = NULL;
 
-  i = 0;
-  src[rd] = '\0';
-  buffer = malloc_this(buffer, k * READ_SIZE);
-  my_strcpy(buffer, dest, k);
-  j = len(dest);
-  while ((src[i]))
-    {
-      buffer[j + i] = src[i];
-      i++;
-    }
-  buffer[j + i] = '\0';
-  free(dest);
-  return (buffer);
+  k = 0;
+  i = -1;
+  j = -1;
+  if (dest != NULL)
+    while (dest[k] != 0)
+	k++;
+      if ((buffer = malloc(k + count + 1)) == NULL)
+	return (NULL);
+      while ((i = i + 1) < k)
+	buffer[i] = dest[i];
+      while ((j = j + 1) < count)
+	buffer[i + j] = src[*pos + j];
+      buffer[i + j] = 0;
+      if (dest != NULL)
+	free(dest);
+      *pos = *pos + count + 1;
+      return (buffer);
 }
-char					*get_next_line(const int fd)
-{
-  char 				*buffer = NULL;
-  static char	*line = NULL;
-  static int	i, j = 0;
-  static ssize_t rd = 0;
 
-  line = malloc_this(line, READ_SIZE);
-  buffer = malloc_this(buffer, READ_SIZE);
-  while ((rd = read(fd, buffer, READ_SIZE)))
+char							*get_next_line(const int fd)
+{
+  static char			buff[READ_SIZE + 1];
+	char						*line;
+  static ssize_t	rd;
+  static int			j;
+  int							i;
+
+  line = NULL;
+  i = 0;
+  while (1)
     {
-      line = my_strcat(line, buffer, i = i + 1, rd);
-      while ((line[j]) != '\0')
-	if ((line[j++] == 10) && (line[j] != ' '))
+      if (j >= rd)
 	    {
-	      line[j - 1] = '\0';
-	      i = j = 0;
-	      free(buffer);
-	      return (line);
+	      j = 0;
+	      if ((rd = read(fd, buff, READ_SIZE)) <= 0)
+		return (line);
+	      i = 0;
 	    }
-    }
-  free(buffer);
-  return (NULL);
+	  if (buff[j + i] == '\n')
+	    return (my_strcat(line, buff, i, &j));
+	  if (j + i == rd - 1)
+	    line = my_strcat(line, buff, i + 1, &j);
+	  i++;
+	}
 }
