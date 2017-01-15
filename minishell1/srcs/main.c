@@ -40,8 +40,8 @@ int							main(int ac, char **av, char **environ)
 	  environ = set_env(environ, "LS_OPT", LS);
 	  while (ac)
 	    {
-	      loop(environ);
-	  return (0);
+		  loop(environ);
+	      return (0);
 	    }
 	  return (0);
 	}

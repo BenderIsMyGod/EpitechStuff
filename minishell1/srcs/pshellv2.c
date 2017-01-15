@@ -36,6 +36,8 @@ char				*stradd(char *src, char *next)
   ssize_t		i;
 
   i = 0;
+  if ((next[0] == '/') || (next[0] == '.'))
+    return (NULL);
   len_src = len(src);
   src[len_src] = '/';
   while (next[i])
@@ -43,7 +45,7 @@ char				*stradd(char *src, char *next)
   src[len_src + 1] = '\0';
   return (src);
 }
-void		 		exec(char **args, char **environ, char *buff)
+int		 			exec(char **args, char **environ, char *buff)
 {
   char			**path;
   int				*wstatus;
@@ -61,16 +63,17 @@ void		 		exec(char **args, char **environ, char *buff)
     i++;
   while ((cpid = waitpid(-1, wstatus, 0)) == -1)
     while (path[j])
-	if ((exe = execve(stradd(path[j++], args[0]), args, \
-			  environ)) && j == i)
+	if (((exe = execve(stradd(path[j++], args[0]), args, \
+			  environ)) && j == i) && (execve(args[0], args, environ)))
 	    {
 	      pprint(args[0], 2);
-	      pprint(": command not found\n", 2);
+	      pprint(": Commande introuvable.\n", 2);
 	      *buff = '\0';
-	      exit (84);
+	      exit (1);
 	    }
+  return (0);
 }
-void		loop(char **environ)
+int				loop(char **environ)
 {
   char		*buff;
   char		**args;
@@ -89,6 +92,6 @@ void		loop(char **environ)
 	pprint(PROMPT, 1);
     }
   if ((isatty(0)))
-    pprint("exit", 1);
-  free(buff);
+    pprint("exit\n", 1);
+  return (0);
 }

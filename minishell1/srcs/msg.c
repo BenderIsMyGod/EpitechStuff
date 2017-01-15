@@ -14,24 +14,27 @@ void		errors(char *errmsg)
 {
   pprint(errmsg, 2);
   pprint("\n", 2);
-  _exit(84);
+  _exit(1);
 }
 
 void				help(char *helpmsg, char *buff)
 {
-  pprint(helpmsg, 1);
+  if ((isatty(0)))
+    pprint(helpmsg, 1);
   *buff = '\0';
 }
 
 void				license(char *licencemsg, char *buff)
 {
-  pprint(licencemsg, 1);
+  if ((isatty(0)))
+    pprint(licencemsg, 1);
   *buff = '\0';
 }
 
 void		clean_exit(char *buff)
 {
   free(buff);
-  pprint("exit\n", 1);
+  if ((isatty(0)))
+    pprint("exit\n", 1);
   _exit (0);
 }
