@@ -1,18 +1,20 @@
 ##
-## Makefile for Minishell1 in /home/bender/Repo/PSU_2016_minishell1/
+## Makefile for Minishell1.2 in /home/bender/Repo/PSU_2016_minishell1/v1.2/
 ##
 ## Made by John Doe
 ## Login   <login_x@epitech.eu>
 ##
-## Started on  Fri Jan 13 13:32:55 2017 John Doe
-## Last update Fri Jan 13 13:34:02 2017 John Doe
+## Started on  Tue Jan 17 11:42:37 2017 John Doe
+## Last update Thu Jan 19 15:32:32 2017 John Doe
 ##
 
 CC		= gcc
 
+CLANG = clang
+
 RM		= rm -rf
 
-CFLAGS		+= -Werror -Wall -Wextra -Wpedantic -std=c99
+CFLAGS		+= -Wfatal-errors -Werror -Wall -Wextra -Wpedantic -std=c99
 CFLAGS		+= -I./include/
 #############################################
 ## The following compilations flags are based
@@ -25,13 +27,17 @@ DFLAGS		+= -Wall -Wextra -Wpedantic \
           -Wredundant-decls -Wnested-externs -Wmissing-include-dirs
 DFLAGS    += -I./include/
 ############################################
-SRCS		= srcs/base.c														\
-		  		srcs/msg.c														\
-		  		srcs/shortcuts.c											\
-		  		srcs/strtowordtab.c										\
-					srcs/GNLgalagalarpz/get_next_line.c		\
-					srcs/built_in.c												\
-		  		srcs/pshellv2.c												\
+SRCS		= srcs/libfunk/base.c						\
+					srcs/libfunk/check_dir.c 			\
+					srcs/libfunk/error.c					\
+					srcs/libfunk/string.c					\
+					srcs/libfunk/strtowordtab.c		\
+					srcs/gnlrpz/get_next_line.c		\
+					srcs/built_in/built_inmatch.c	\
+					srcs/built_in/built_in.c			\
+					srcs/setenv/env_inlist.c			\
+					srcs/setenv/env.c							\
+					srcs/minishell1/minishell1.c	\
 		  		srcs/main.c
 
 
@@ -54,5 +60,8 @@ re:		fclean all
 
 .PHONY:		all clean fclean re
 
-debug:
+debugc:
+		$(CLANG) -g $(DFLAGS) $(SRCS) -o $(NAME)
+
+debugg:
 		$(CC) -g $(DFLAGS) $(SRCS) -o $(NAME)
