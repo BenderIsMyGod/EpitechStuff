@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Mon Jan 16 22:42:19 2017 John Doe
-** Last update	Sun Jan 22 20:37:40 2017 Full Name
+** Last update	Sat Jan 21 11:14:41 2017 Full Name
 */
 
 #ifndef ERRORS_H_
@@ -19,7 +19,7 @@
 #define NOEXST	": No such file or directory\n"
 #define NOEXEC  ": Command not found.\n"
 #define SEGFLT  "Segmentation fault (core dumped)\n"
-#define FPERR   "Floating exception (core dumped)\n"
+#define FPERR   "Floating point exception (core dumped)\n"
 #define NOPERM	": Permission denied.\n"
 /*
 ** got an error? an error message ?
