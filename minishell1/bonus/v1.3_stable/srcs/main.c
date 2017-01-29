@@ -27,7 +27,8 @@ int					execshell(char **environ, t_env *list)
       if (clean_input[0] == '\f')
 	p_printf(1, "\x1b[2J\x1b[1;1H");
       turn_intoargs = strto_wordtab(clean_input, " ");
-      if (((wait(&status)) == -1) && (child = fork()))
+      child = fork();
+      while ((waitpid(child, &status, 0)) == -1)
 	execve(turn_intoargs[0], turn_intoargs, environ);
       clean_free(clean_input);
     }
