@@ -8,7 +8,7 @@
 ** Last update	Thu Jan 19 15:19:45 2017 Full Name
 */
 
-#include "shell1.h"
+#include "../include/shell1.h"
 #include <stdio.h>
 
 int				main(int ac, char **av, char **environ)
