@@ -1,0 +1,5 @@
+langage : c
+
+addons:
+    code_climate:
+        repo_token: 30dfc0ddeb00975ca2896da5cf599f0db3f96aa34461e688fbdd15f3798638d2
