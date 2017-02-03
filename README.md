@@ -10,3 +10,6 @@ NOTE :
        
        
 Help yourself !
+
+Code quality check provided By Classes 
+[![Code Climate](https://codeclimate.com/github/BenderIsMyGod/EpitechStuff/badges/gpa.svg)](https://codeclimate.com/github/BenderIsMyGod/EpitechStuff)
