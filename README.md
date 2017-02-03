@@ -10,5 +10,8 @@ NOTE :
        
        
 Help yourself !
+Test tool by code climate :
 
 [![Code Climate](https://codeclimate.com/github/BenderIsMyGod/EpitechStuff/badges/gpa.svg)](https://codeclimate.com/github/BenderIsMyGod/EpitechStuff)
+
+[![Test Coverage](https://codeclimate.com/github/BenderIsMyGod/EpitechStuff/badges/coverage.svg)](https://codeclimate.com/github/BenderIsMyGod/EpitechStuff/coverage)
