@@ -8,7 +8,7 @@
 ** Last update	Sun Jan 22 14:09:48 2017 Full Name
 */
 
-#include "shell1.h"
+#include "../../include/shell1.h"
 
 void	get_out(int exitval)
 {

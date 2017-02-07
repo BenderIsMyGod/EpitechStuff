@@ -8,7 +8,8 @@
 ** Last update Wed Jan 18 10:32:00 2017 John Doe
 */
 
-#include "shell1.h"
+#include "../../include/errors.h"
+#include "../../include/base.h"
 #include <stdlib.h>
 
 char			**dup_env(char **env)

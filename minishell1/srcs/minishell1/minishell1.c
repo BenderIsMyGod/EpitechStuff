@@ -8,38 +8,35 @@
 ** Last update	Sun Jan 22 14:04:16 2017 Full Name
 */
 
-#include "shell1.h"
-#include "errors.h"
+#include <wait.h>
+#include "../../include/errors.h"
+#include "../../include/shell1.h"
 
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <stdlib.h>
+int handlepid(int pid, t_pid *ptr);
 
-int				handlepid(int pid, t_pid *ptr)
-{
-  if ((pid))
+int handlepid(int pid, t_pid *ptr) {
+    if ((pid))
     {
-      ptr->ctrl = waitpid(pid, &ptr->status, WUNTRACED | WCONTINUED);
-	do {
-	  if (ptr->ctrl == -1)
-	    errors(strerror(errno), 84);
-	  if (WIFEXITED(ptr->status))
-	    return (0);
-	  else if (WIFSIGNALED(ptr->status))
-	    {
-	      if (WTERMSIG(ptr->status) == 11)
-		p_exit(SEGFLT, 139);
-	      if (WTERMSIG(ptr->status) == 8)
-		p_exit(FPERR, 136);
-	    }
-	  else if (WIFSTOPPED(ptr->status))
-	    pprint("process stopped\n", 1);
-	  else if (WIFCONTINUED(ptr->status))
-	pprint("continued\n", 1); }
-      while (!WIFEXITED(ptr->status) && !WIFSIGNALED(ptr->status));
-    return (0); }
-  return (1);
+        ptr->ctrl = waitpid(pid, &ptr->status, WUNTRACED | WCONTINUED);
+        do {
+            if (ptr->ctrl == -1)
+                errors(strerror(errno), 84);
+            if (WIFEXITED(ptr->status))
+                return (0);
+            else if (WIFSIGNALED(ptr->status))
+            {
+                if (WTERMSIG(ptr->status) == 11)
+                    p_exit(SEGFLT, 139);
+                if (WTERMSIG(ptr->status) == 8)
+                    p_exit(FPERR, 136);
+            }
+            else if (WIFSTOPPED(ptr->status))
+                pprint("process stopped\n", 1);
+            else if (WIFCONTINUED(ptr->status))
+                pprint("continued\n", 1); }
+        while (!WIFEXITED(ptr->status) && !WIFSIGNALED(ptr->status));
+        return (0); }
+    return (1);
 }
 
 int				forkandrun(t_shell *list, char **env)

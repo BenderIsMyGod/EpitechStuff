@@ -8,9 +8,8 @@
 ** Last update	Sat Jan 21 10:45:48 2017 Full Name
 */
 
-#include "base.h"
-#include "errors.h"
-#include <unistd.h>
+#include "../../include/errors.h"
+#include "../../include/base.h"
 #include <stdlib.h>
 
 int					pprint(const char *str, int fd)

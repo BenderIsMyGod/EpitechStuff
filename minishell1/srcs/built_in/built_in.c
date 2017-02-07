@@ -8,11 +8,8 @@
 ** Last update	Sun Jan 22 14:03:04 2017 Full Name
 */
 
-#include "shell1.h"
-#include <stdlib.h>
+#include "../../include/shell1.h"
 #include <stdio.h>
-#include <errno.h>
-#include <string.h>
 
 /*
 ** Penser a afficher l'env

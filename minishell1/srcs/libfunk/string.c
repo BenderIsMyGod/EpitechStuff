@@ -8,7 +8,7 @@
 ** Last update Fri Jan 20 23:10:53 2017 John Doe
 */
 
-#include "base.h"
+#include "../../include/base.h"
 #include <stdlib.h>
 
 int			my_atoi(const char *str)
@@ -16,16 +16,19 @@ int			my_atoi(const char *str)
   int		nb;
 
   nb = 0;
-  while (*str)
+    if ((str))
     {
-      if (*str >= '0' && *str <= '9')
-	{
-	  nb *= 10;
-	  nb += *str - 48;
-	}
-      else
-	return (nb);
-      str++;
+        while (*str)
+            {
+                if (*str >= '0' && *str <= '9')
+            {
+                    nb *= 10;
+                    nb += *str - 48;
+            }
+            else
+                return (nb);
+            str++;
+        }
     }
   return (nb);
 }

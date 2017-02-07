@@ -1,0 +1,3 @@
+/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/CMakeFiles/minishell1.dir

@@ -8,12 +8,13 @@
 ** Last update	Sun Jan 22 13:29:30 2017 Full Name
 */
 
-#include "base.h"
-#include "errors.h"
+#include "../../include/errors.h"
+#include "../../include/base.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <lzma.h>
 
 int					findgoodpath(const char *name, char **paths)
 {

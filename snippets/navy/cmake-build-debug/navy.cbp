@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="navy"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/bender/snippets/navy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/bender/snippets/navy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/bender/snippets/navy/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="navy">
+				<Option output="/home/bender/snippets/navy/cmake-build-debug/navy" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bender/snippets/navy/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/bender/snippets/navy/."/>
+					<Add directory="/home/bender/snippets/navy/include"/>
+					<Add directory="/home/bender/snippets/navy/srcs"/>
+					<Add directory="/home/bender/snippets/navy/srcs/core"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include-fixed"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/../../../../x86_64-suse-linux/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/c++/6/x86_64-suse-linux"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 navy"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="navy/fast">
+				<Option output="/home/bender/snippets/navy/cmake-build-debug/navy" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bender/snippets/navy/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/bender/snippets/navy/."/>
+					<Add directory="/home/bender/snippets/navy/include"/>
+					<Add directory="/home/bender/snippets/navy/srcs"/>
+					<Add directory="/home/bender/snippets/navy/srcs/core"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include-fixed"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/../../../../x86_64-suse-linux/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/c++/6/x86_64-suse-linux"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 navy/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/snippets/navy/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/bender/snippets/navy/include/base.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/cli.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/errors.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/get_next_line.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/navy.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/printf.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/serv.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/include/strtowordtab.h">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/base.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/base2.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/error.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/flag_match.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/flgs.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/get_next_line.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/printf.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/putnbr.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/string.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/core/strtowordtab.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/srcs/ctrl.c">
+			<Option target="navy"/>
+		</Unit>
+		<Unit filename="/home/bender/snippets/navy/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

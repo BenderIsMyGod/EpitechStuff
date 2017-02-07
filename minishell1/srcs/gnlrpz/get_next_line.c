@@ -8,7 +8,7 @@
 ** Last update Sun Jan 15 13:00:21 2017 Junior Bender
 */
 
-#include "get_next_line.h"
+#include "../../include/get_next_line.h"
 #include <stdlib.h>
 #include <unistd.h>
 

@@ -1,0 +1,3 @@
+/home/bender/snippets/v1.3_stable/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/bender/snippets/v1.3_stable/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/bender/snippets/v1.3_stable/cmake-build-debug/CMakeFiles/v1_3_stable.dir

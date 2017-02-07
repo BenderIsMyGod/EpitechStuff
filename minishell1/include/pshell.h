@@ -9,7 +9,7 @@
 */
 
 #ifndef READSIZE
-# define 	READSIZE	(500)
+# define    READSIZE    (500)
 #endif
 
 #ifndef BUFFERSIZE
@@ -34,27 +34,45 @@
 #include "get_next_line.h"
 #include "msg.h"
 
-void			pprint(char *str, int fd);
-void			printerr(char *errmsg);
-ssize_t		len(char *str);
+void pprint(char *str, int fd);
 
-char			**set_env(char **environ, char *str, char *value);
-char			**change_path(char **environ, char *path);
-char			*set_path(char *path);
-int				parse_env(char **env, char *str);
-int				loop(char **environ);
-int				exec(char **args, char **environ, char *buff);
-void			shortcuts(char *buff);
-void			clean_exit(char *buff);
-void			free_that_bfr(char **bfr);
+void printerr(char *errmsg);
 
-char			*stradd(char *src, char *next);
-char			*my_strcat(char *dest, char *src);
-int				my_strncmp(char *s1, char *s2, int n);
+ssize_t len(char *str);
+
+char **set_env(char **environ, char *str, char *value);
+
+char **change_path(char **environ, char *path);
+
+char *set_path(char *path);
+
+int parse_env(char **env, char *str);
+
+int loop(char **environ);
+
+int exec(char **args, char **environ, char *buff);
+
+void shortcuts(char *buff);
+
+void clean_exit(char *buff);
+
+void free_that_bfr(char **bfr);
+
+char *stradd(char *src, char *next);
+
+char *my_strcat(char *dest, char *src);
+
+int my_strncmp(char *s1, char *s2, int n);
 
 typedef void (*sighandler_t)(int);
-void	my_signal(int signum);
+
+void my_signal(int signum);
+
 sighandler_t signal(int signum, sighandler_t handler);
+
+sighandler_t signal(int signum, sighandler_t handler) {
+    return NULL;
+}
 
 
 #endif

@@ -8,8 +8,7 @@
 ** Last update	Sat Jan 21 10:49:25 2017 Full Name
 */
 
-#include "base.h"
-#include "errors.h"
+#include "../../include/base.h"
 
 #include <stdlib.h>
 

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="minishell1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="minishell1">
+				<Option output="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/minishell1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include-fixed"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/../../../../x86_64-suse-linux/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/c++/6/x86_64-suse-linux"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 minishell1"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="minishell1/fast">
+				<Option output="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/minishell1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/include-fixed"/>
+					<Add directory="/usr/lib64/gcc/x86_64-suse-linux/6/../../../../x86_64-suse-linux/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/c++/6/x86_64-suse-linux"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 minishell1/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/cmake-build-debug/Makefile">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/base.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/errors.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/get_next_line.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/msg.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/pshell.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/setenv.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/shell1.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/include/strtowordtab.h">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/built_in/built_in.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/built_in/built_inmatch.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/gnlrpz/get_next_line.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/libfunk/base.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/libfunk/check_dir.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/libfunk/error.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/libfunk/string.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/libfunk/strtowordtab.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/main.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/minishell1/minishell1.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/setenv/env.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/srcs/setenv/env_inlist.c">
+			<Option target="minishell1"/>
+		</Unit>
+		<Unit filename="/home/bender/GrowUp/snippetsandmore/minishell1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -8,8 +8,7 @@
 ** Last update	Sat Jan 21 10:20:57 2017 Full Name
 */
 
-#include "errors.h"
-#include "base.h"
+#include "../../include/base.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>

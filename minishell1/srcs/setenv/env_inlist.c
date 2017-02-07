@@ -8,8 +8,8 @@
 ** Last update Thu Jan 19 13:23:45 2017 John Doe
 */
 
-#include "setenv.h"
-#include "base.h"
+#include "../../include/setenv.h"
+#include "../../include/base.h"
 
 t_environ		*env_inalist(char **environ)
 {
