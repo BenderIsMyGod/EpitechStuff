@@ -5,12 +5,11 @@
 ** Login   <CAZAUB_C@epitech.net>
 **
 ** Started on  Thu Feb  9 21:10:32 2017 clement cazaubon
-** Last update Fri Feb 10 09:14:14 2017 John Doe
+** Last update Fri Feb 10 14:03:05 2017 clement cazaubon
 */
 
 #include "navy.h"
 
-/* format_pos(str); <== pas encore ecrite x) */
 int	check_valid_pos(char *str)
 {
   if (len(str) != 2 || is_alpha(str[0]) == -1 || is_number(str[1]) == -1)
@@ -31,7 +30,7 @@ int	check_win_loose(char **str)
     {
       while (j < 8)
 	{
-	  if (str[i][j] == 0)
+	  if (str[i][j] >= '2' && str[i][j] <= '5')
 	    compt++;
 	  j++;
 	}
@@ -43,4 +42,12 @@ int	check_win_loose(char **str)
   return (0);
 }
 
-void	refresh_map();
+void	affich_map(t_map *map)
+{
+  p_printf(1, "my_positions:\n");
+  p_printf(1, "%s", FIRSTROWS);
+  liner(map->map);
+  p_printf(1, "\nenemy's positions:\n%s",FIRSTROWS);
+  liner(map->enemy_map);
+  p_printf(1, "\n");
+}

@@ -5,11 +5,23 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:20:18 2017 John Doe
-** Last update Fri Feb 10 09:20:25 2017 John Doe
+** Last update Fri Feb 10 10:10:41 2017 John Doe
 */
 
 #include "base.h"
 
+int			is_lwcse(const char c)
+{
+  if (c >= 'a' && c <= 'z')
+    return (1);
+  return (0);
+}
+int			is_num(const char c)
+{
+  if (c >= '0' && c <= '9')
+    return (1);
+  return (0);
+}
 int			my_stringisnum(const char *str)
 {
   int		i;

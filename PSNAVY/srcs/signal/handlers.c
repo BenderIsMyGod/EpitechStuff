@@ -10,8 +10,6 @@
 
 #include "navy.h"
 
-extern int client_pid;
-
 void			handler_client(int signum, siginfo_t *ptr, void *bfr)
 {
   static int usr1 = 0;
@@ -25,14 +23,15 @@ void			handler_client(int signum, siginfo_t *ptr, void *bfr)
     {
       usr2++;
       if (usr2 == 1)
-	p_printf(1, "successfully connected to pid [%d]\n\n", ptr->si_pid);
+	p_printf(1, "successfully connected\n\n", ptr->si_pid);
     }
-  else if (signum == SIGQUIT)
+  if ((cvrt1 = usr1 + '0') >= 'A' && (cvrt2 = usr2 + '0') >= '1')
     {
       cvrt1 = usr1 + '0';
       cvrt2 = usr2 + '0';
       p_printf(1, "COORDINATES: [%c][%c]\n", cvrt1, cvrt2);
-      exit (0);
+      usr1 = 0;
+      usr2 = 2;
     }
 }
 void 			handler_server(int signum, siginfo_t *ptr, void *bfr)
@@ -47,18 +46,18 @@ void 			handler_server(int signum, siginfo_t *ptr, void *bfr)
       usr1++;
       if (usr1 == 1)
 	{
-	  p_printf(1, "enemy connected with pid [%d]\n\n", ptr->si_pid);
-	  client_pid = ptr->si_pid;
+	  p_printf(1, "enemy connected\n\n", ptr->si_pid);
 	  kill(ptr->si_pid, SIGUSR2);
 	}
     }
   else if (signum == SIGUSR2)
     usr2++;
-  else if (signum == SIGQUIT)
+  if ((cvrt1 = usr1 + '0') >= 'A' && (cvrt2 = usr2 + '0') >= '1')
     {
       cvrt1 = usr1 + '0';
       cvrt2 = usr2 + '0';
       p_printf(1, "COORDINATES: [%c][%c]\n", cvrt1, cvrt2);
-      exit (0);
+      usr1 = 2;
+      usr2 = 0;
     }
 }

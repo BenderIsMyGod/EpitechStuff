@@ -5,7 +5,7 @@
 ** Login   <CAZAUB_C@epitech.net>
 ** 
 ** Started on  Mon Jan 30 10:37:09 2017 clement cazaubon
-** Last update Thu Feb  9 21:55:04 2017 clement cazaubon
+** Last update Fri Feb 10 14:03:33 2017 clement cazaubon
 */
 
 #include <unistd.h>
@@ -34,3 +34,4 @@ int	y_place(t_map *map, char *str);
 int	check_2_point(char *str);
 int	good_direction(char *str);
 int	str_cap(char *str);
+void	liner(char **str);

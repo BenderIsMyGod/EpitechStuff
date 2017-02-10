@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan 29 10:13:32 2017 John Doe
-** Last update Tue Feb  7 14:25:12 2017 John Doe
+** Last update Fri Feb 10 10:25:27 2017 John Doe
 */
 
 #ifndef BASE_H_
@@ -13,8 +13,8 @@
 
 #include "errors.h"
 #include <unistd.h>
-#include <errno.h>
 #include <string.h>
+
 /*
 ** string.c aka string.h
 */
@@ -27,6 +27,8 @@ char		*my_strcatvs(char *dest, const char *src);
 /*
 ** stdlib adapted
 */
+int			is_lwcse(const char c);
+int			is_num(const char c);
 int			my_stringisnum(const char *str);
 int			my_atoi(const char *str);
 int			pprint(const char *str, int fd);

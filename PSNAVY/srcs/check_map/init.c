@@ -5,7 +5,7 @@
 ** Login   <CAZAUB_C@epitech.net>
 ** 
 ** Started on  Wed Feb  1 12:14:06 2017 clement cazaubon
-** Last update Thu Feb  9 20:13:29 2017 clement cazaubon
+** Last update Fri Feb 10 14:06:36 2017 clement cazaubon
 */
 
 #include "navy.h"
@@ -22,6 +22,7 @@ void	init_map (t_map *map)
       while (j <= 7)
 	{
 	  map->map[i][j] = '.';
+	  map->enemy_map[i][j] = '.';
 	  j++;
 	}
       j = 0;

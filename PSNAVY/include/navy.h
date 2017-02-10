@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:24:32 2017 John Doe
-** Last update Fri Feb 10 09:24:38 2017 John Doe
+** Last update Fri Feb 10 10:44:35 2017 John Doe
 */
 
 #ifndef NAVY_H_
@@ -28,7 +28,7 @@
 
 #define FIRSTROWS		" |A B C D E F G H\n-+---------------"
 
-extern int client_pid;
+// extern int client_pid;
 
 /*
 ** Tests sources will soon be merged
@@ -54,7 +54,7 @@ int					receiver(void);
 int					sender(char *pid);
 void				receive_msg(int signum, siginfo_t *info, void *context);
 void				send_message(unsigned int message, int pid);
-void				print_message();
+void				print_message(void);
 const char 	*byte_to_binary(unsigned int msg);
 /*
 ***************************************************
@@ -82,24 +82,6 @@ char		**get_map(const char *pathname);
 char		**put_hits(char **map, char *coord);
 void		print_position(char **map);
 void		print_awesome_emptymap(void);
-/* Check_map funct to be merged */
-int	check_valid_pos(char *str);
-int	check_win_loose(char **str);
-int	size_boat(char *str);
-int	f_location(char *str);
-int	l_location(char *str);
-int	check_both(char *str);
-int	check_2_point(char *str);
-int	str_cap(char *str);
-int	good_direction(char *str);
-int	basic_analitics(char *str);
-int	rf(int fd, t_map *map);
-int	check_f(char *name, t_map *map);
-void	init_map (t_map *map);
-int	nb_check(t_map *map);
-int	add_tomap(t_map *map, char *str);
-int	x_place(t_map *map, char *str);
-int	y_place(t_map *map, char *str);
 /* ************************** */
 /*
 ** Sigaction aka com protocol

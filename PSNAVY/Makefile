@@ -5,16 +5,19 @@
 ## Login   <login_x@epitech.eu>
 ##
 ## Started on  Mon Jan 30 14:05:14 2017 John Doe
-## Last update Fri Feb 10 09:03:42 2017 John Doe
+## Last update Fri Feb 10 11:44:39 2017 John Doe
 ##
 
 CC				= gcc
 
 CLG				= clang
 
-RM				= rm -rf
+RM				= @rm -rf
 
-CFLAGS		= -Wall -Werror -Wpedantic -std=gnu99
+PRINT     = @echo -e "\n\e[1m****\n\t=>Building NAVY suceed\n\t\tEnjoy ;)\n\
+						****\n\e[0m"
+
+CFLAGS		= -Wall -Werror -Wpedantic -Wfatal-errors -std=gnu99
 CFLAGS		+= -I./include/
 #############################################
 ## The following compilations flags are based
@@ -22,9 +25,10 @@ CFLAGS		+= -I./include/
 ##  => https://github.com/mcinglis/c-style <=
 #############################################
 DFLAGS		+= -g2 -Wall -Wpedantic -std=gnu99 \
-          -Wformat=2 -Wno-unused-parameter -Wshadow \
-          -Wwrite-strings -Wstrict-prototypes -Wold-style-definition \
-          -Wredundant-decls -Wnested-externs -Wmissing-include-dirs
+          	-Wformat=2 -Wno-unused-parameter -Wshadow \
+          	-Wwrite-strings -Wstrict-prototypes -Wold-style-definition \
+          	-Wredundant-decls -Wnested-externs \
+						-Wmissing-include-dirs
 DFLAGS    += -I./include/
 ############################################
 OBJS			= $(SRCS:.c=.o)
@@ -56,12 +60,17 @@ SRCS			= srcs/core/base.c							\
 						srcs/check_map/nb_ship.c
 MAIN			=	srcs/main.c
 
-TESTSRCS	= srcs/test/*.c
+TESTSRCS	= srcs/newcom/signauxbitwised.c \
+						srcs/newcom/receiver.c				\
+						srcs/newcom/sender.c					\
+						srcs/maintest.c
+
 
 all:				$(NAME)
 
 $(NAME):		$(OBJS)
 						$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(CFLAGS) -o $(NAME)
+						$(PRINT)
 
 clean:
 						$(RM) $(OBJS)
@@ -72,12 +81,14 @@ fclean: 		clean
 re: 				fclean all
 
 debug:
-						$(CC) $(DFLAGS) $(SRCS) -o $(NAME)
+						@echo -e "\n\nD_BUG mode ON (with gcc)\n\n"
+						$(CC) $(DFLAGS) $(SRCS) $(MAIN) -o $(NAME)
 
 dbc:
-						$(CLG) $(DFLAGS) $(SRCS) -o $(NAME)
+						@echo -e "\n\nD_BUG mode ON (with clang)\n\n"
+						$(CLG) $(DFLAGS) $(SRCS) $(MAIN) -o $(NAME)
 
 test:
-						$(CLG) $(DFLAGS) $(SRCS) $(TESTSRCS) -o testcom
+						$(CC) $(DFLAGS) $(SRCS) $(TESTSRCS) -o testcom
 
-.PHONY: all clean fclean re
+.PHONY: 		all clean fclean re
