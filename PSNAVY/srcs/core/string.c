@@ -1,11 +1,11 @@
 /*
-** string.c for minishell1 in /home/bender/GrowUp/snippetsandmore/minishell1/srcs/
+** string.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Jan 16 22:29:23 2017 John Doe
-** Last update	Sat Jan 21 22:12:57 2017 Full Name
+** Started on  Fri Feb 10 09:22:48 2017 John Doe
+** Last update Fri Feb 10 09:22:56 2017 John Doe
 */
 
 #include "base.h"

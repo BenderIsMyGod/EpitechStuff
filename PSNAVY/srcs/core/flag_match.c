@@ -1,11 +1,11 @@
 /*
-** flag_match.c for P_printf in /home/bender/GrowUp/snippetsandmore/printf_nextry/srcs/
+** flag_match.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Jan 23 10:38:40 2017 John Doe
-** Last update Mon Jan 30 21:43:28 2017 John Doe
+** Started on  Fri Feb 10 09:20:36 2017 John Doe
+** Last update Fri Feb 10 09:20:44 2017 John Doe
 */
 
 #include "printf.h"

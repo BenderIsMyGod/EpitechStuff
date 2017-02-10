@@ -1,11 +1,11 @@
 /*
-** sigauxbitwised.c for PSU_2016_ncoordy in /home/bender/snippets/bitwise/
+** sigauxbitwised.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/test/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Feb  6 18:03:48 2017 John Doe
-** Last update Tue Feb  7 14:57:33 2017 John Doe
+** Started on  Fri Feb 10 09:23:24 2017 John Doe
+** Last update Fri Feb 10 09:23:32 2017 John Doe
 */
 
 #include "navy.h"
@@ -30,20 +30,18 @@ void					send_message(unsigned int message, int pid)
   int					k;
   const char *bfr;
 
-  k = 13;
+  k = 15;
   bfr = byte_to_binary(message);
   while (k != -1)
     {
       if (bfr[k] == '0')
 	{
-	  usleep(6);
-	  write(1, "0 ", 2);
+	  usleep(1000);
 	  kill(pid, SIGUSR1);
 	}
       else if (bfr[k] == '1')
 	{
-	  usleep(6);
-	  write(1, "1 ", 2);
+	  usleep(1000);
 	  kill(pid, SIGUSR2);
 	}
       k--;
@@ -51,40 +49,17 @@ void					send_message(unsigned int message, int pid)
   write(1, "\n", 1);
 }
 
-int			cli(void)
+unsigned int	*pack_message(char *msg)
 {
-  struct sigaction cli;
+  unsigned int *message;
 
-  cli.sa_sigaction = handler_cli;
-  sigemptyset(&cli.sa_mask);
-  cli.sa_flags = SA_SIGINFO;
-  p_printf(1, "My pid :[%d]\n", getpid());
-  write(1, "waiting for signal\n", 19);
-  while (1)
+  if ((message = malloc(sizeof(*message) * len(msg) + 1)) == NULL)
+    _exit (84);
+  while (msg)
     {
-      usleep(4);
-      sigaction(SIGUSR1, &cli, NULL);
-      sigaction(SIGUSR2, &cli, NULL);
+      *message = *msg;
+      msg++;
     }
-  return (0);
-}
-
-int			serv(char *pid)
-{
-  char					*cmd;
-  unsigned int   message;
-  write(1, "CMD : ", 6);
-  message = 0;
-  while ((cmd = get_next_line(0)))
-{
-      message = *cmd;
-      message ^= END_TRANSMISSION;
-      write(1, &message, 1);
-      p_printf(1, "\n%s\n", byte_to_binary(message));
-      send_message(message, my_atoi(pid));
-      write(1, "CMD : ", 6);
-      message = 0;
-      free(cmd);
-    }
-  return (0);
+  message[len(msg) + 1] ^= END_TRANSMISSION(9, 10);
+  return (message);
 }

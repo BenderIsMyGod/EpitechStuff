@@ -1,11 +1,11 @@
 /*
-** test.c for Test in /home/bender/snippets/bitwise/
+** test.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/test/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Feb  6 16:16:14 2017 John Doe
-** Last update Tue Feb  7 14:11:23 2017 John Doe
+** Started on  Fri Feb 10 09:23:40 2017 John Doe
+** Last update Fri Feb 10 09:23:46 2017 John Doe
 */
 
 #include "navy.h"
@@ -14,28 +14,34 @@
 #define SET_O(pos) (0 << pos)
 #define SET_ONE(pos) (1 << pos)
 
-void		handler_cli(int signum, siginfo_t *info, void *context)
+void		print_message(void)
 {
-  static unsigned int message = 0;
-  static int pos = 0;
+  if (proto.count == 2)
+    {
+      proto.ptr.bfr[proto.count + 1] = '\0';
+      p_printf(1, "%s: %s\n", proto.ptr.bfr, "miss");
+      proto.ptr.bfr[0] = '\0';
+      proto.count = 0;
+    }
+}
 
+void		receive_msg(int signum, siginfo_t *info, void *context)
+{
   if (signum == SIGUSR1)
     {
-      write(1, "0 ", 2);
-      message |= SET_O(pos);
-      pos++;
+      proto.ptr.message |= SET_O(proto.pos);
+      proto.pos++;
     }
   else if (signum == SIGUSR2)
     {
-      write(1, "1 ", 2);
-      message |= SET_ONE(pos);
-      pos++;
+      proto.ptr.message |= SET_ONE(proto.pos);
+      proto.pos++;
     }
-  if (pos >= 10 && (message & END_TRANSMISSION))
+  if ((proto.pos == 10) && (proto.ptr.message & END_TRANSMISSION(9, 10)))
     {
-      p_printf(1, "\nbinary, [%s] et message : [%c]\n", byte_to_binary(message), \
-	     message);
-      message = '\0';
-      pos = 0;
+      proto.ptr.bfr[proto.count++] = proto.ptr.message;
+      print_message();
+      proto.ptr.message = '\0';
+      proto.pos = 0;
     }
 }

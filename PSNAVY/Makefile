@@ -5,7 +5,7 @@
 ## Login   <login_x@epitech.eu>
 ##
 ## Started on  Mon Jan 30 14:05:14 2017 John Doe
-## Last update Tue Feb  7 14:11:06 2017 John Doe
+## Last update Fri Feb 10 09:03:42 2017 John Doe
 ##
 
 CC				= gcc
@@ -31,30 +31,37 @@ OBJS			= $(SRCS:.c=.o)
 
 NAME			= navy
 
-SRCS			= srcs/core/base.c						\
-						srcs/core/base2.c						\
-						srcs/core/error.c						\
-						srcs/core/flag_match.c			\
-						srcs/core/flgs.c						\
-						srcs/core/get_next_line.c		\
-						srcs/core/printf.c					\
-						srcs/core/putnbr.c					\
-						srcs/core/string.c					\
-						srcs/core/strtowordtab.c		\
-						srcs/signal/sigaction.c			\
-						srcs/signal/handlers.c			\
-						srcs/game/games.c						\
-						srcs/parsing/openmap.c			\
-						srcs/parsing/check.c				\
-						srcs/visuals/graph.c				
-						# srcs/main.c
+SRCS			= srcs/core/base.c							\
+						srcs/core/base2.c							\
+						srcs/core/error.c							\
+						srcs/core/flag_match.c				\
+						srcs/core/flgs.c							\
+						srcs/core/get_next_line.c			\
+						srcs/core/printf.c						\
+						srcs/core/putnbr.c						\
+						srcs/core/string.c						\
+						srcs/core/strtowordtab.c			\
+						srcs/signal/sigaction.c				\
+						srcs/signal/handlers.c				\
+						srcs/game/games.c							\
+						srcs/parsing/openmap.c				\
+						srcs/parsing/check.c					\
+						srcs/visuals/graph.c					\
+						srcs/check_map/char.c					\
+						srcs/check_map/check_fight.c	\
+						srcs/check_map/check_location.c		\
+						srcs/check_map/check_more.c		\
+						srcs/check_map/file_check.c		\
+						srcs/check_map/init.c					\
+						srcs/check_map/nb_ship.c
+MAIN			=	srcs/main.c
 
 TESTSRCS	= srcs/test/*.c
 
 all:				$(NAME)
 
 $(NAME):		$(OBJS)
-						$(CC) $(CFLAGS) $(SRCS) $(CFLAGS) -o $(NAME)
+						$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(CFLAGS) -o $(NAME)
 
 clean:
 						$(RM) $(OBJS)

@@ -1,11 +1,11 @@
 /*
-** printf.c for p_printf in /home/bender/GrowUp/snippetsandmore/printf_nextry/srcs/
+** printf.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Jan 23 07:58:10 2017 John Doe
-** Last update Mon Jan 30 21:43:13 2017 John Doe
+** Started on  Fri Feb 10 09:21:46 2017 John Doe
+** Last update Fri Feb 10 09:21:53 2017 John Doe
 */
 
 #include <unistd.h>

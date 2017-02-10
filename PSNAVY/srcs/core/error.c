@@ -1,11 +1,11 @@
 /*
-** error.c for Minishell1 in /home/bender/GrowUp/snippetsandmore/minishell1/srcs/
+** error.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Jan 16 22:40:27 2017 John Doe
-** Last update	Sat Jan 21 18:12:04 2017 Full Name
+** Started on  Fri Feb 10 09:19:37 2017 John Doe
+** Last update Fri Feb 10 09:19:46 2017 John Doe
 */
 
 #include <stdlib.h>
@@ -18,12 +18,12 @@
 int		p_exit(const char *str, int exitval)
 {
   write(2, str, len(str));
-  return (exitval);
+  _exit (exitval);
 }
 int		errors(const char *errmsg, int exitval)
 {
   write(2, errmsg, len(errmsg));
-  exit (exitval);
+  _exit (exitval);
 }
 
 const  char				*removetrailingspace(const char *str)

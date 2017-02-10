@@ -1,11 +1,11 @@
 /*
-** base2.c for V1.3_stable in /home/bender/snippets/v1.3_stable/srcs/
+** base2.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Mon Jan 30 11:47:36 2017 John Doe
-** Last update Tue Feb  7 14:25:34 2017 John Doe
+** Started on  Fri Feb 10 09:20:18 2017 John Doe
+** Last update Fri Feb 10 09:20:25 2017 John Doe
 */
 
 #include "base.h"

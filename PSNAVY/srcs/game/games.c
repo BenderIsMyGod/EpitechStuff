@@ -17,7 +17,6 @@ int			send_coord(char *bfr, int ennemy_pid)
   int   b = 0;
   const char	*a;
 
-
   a = " ABCDEFGH";
   while ((*a) && *a != bfr[0])
     {
@@ -37,14 +36,12 @@ int					servgame_loop(struct sigaction serv)
 {
   char			*user_input;
 
-
   while ((user_input = clean_args(get_next_line(0))))
     {
       send_coord(user_input, client_pid);
       p_printf(1, "[%s]\n", user_input);
       p_printf(1, "\x1B[0mattack: ");
       p_printf(1, "\x1B[3m");
-      // checkargs(user_input);
       clean_free(user_input);
       return (0);
     }
@@ -67,9 +64,7 @@ int				server_game(const char *filename)
   print_awesome_emptymap();
   while ((42))
     {
-      // p_printf(1, "\nsignal received\n");
       servgame_loop(serv);
-      sleep(42);
       if (sigaction(SIGINT, &serv, NULL) == -1)
 	errors("./navy: Sigaction failed\n", 84);
     }
@@ -108,7 +103,6 @@ int 		client_game(const char *filename, int serv_pid)
     {
       p_printf(1, "\nsignal received\n");
       cligame_loop(cli);
-      sleep(42);
       if (sigaction(SIGINT, &cli, NULL) == -1)
 	errors("./navy: Sigaction failed\n", 84);
     }

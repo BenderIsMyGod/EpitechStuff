@@ -1,11 +1,11 @@
 /*
-** get_next_line.c for GNL in /home/bender/Repo/CPE_2016_getnextline
+** get_next_line.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
-** Made by Junior Bender
-** Login   <bender@epitech.net>
+** Made by John Doe
+** Login   <login_x@epitech.eu>
 **
-** posed on  Sat Jan 14 12:34:31 2017 Junior Bender
-** Last update	Sat Jan 21 16:26:55 2017 Full Name
+** Started on  Fri Feb 10 09:21:28 2017 John Doe
+** Last update Fri Feb 10 09:21:36 2017 John Doe
 */
 
 #include <stdlib.h>

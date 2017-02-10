@@ -1,11 +1,11 @@
 /*
-** strtowordtab.c for Minishell1 in /home/bender/GrowUp/snippetsandmore/minishell1/v1.2/
+** strtowordtab.c for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/srcs/core/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Tue Jan 17 08:06:36 2017 John Doe
-** Last update	Sat Jan 21 10:49:25 2017 Full Name
+** Started on  Fri Feb 10 09:23:02 2017 John Doe
+** Last update Fri Feb 10 09:23:09 2017 John Doe
 */
 
 #include "base.h"

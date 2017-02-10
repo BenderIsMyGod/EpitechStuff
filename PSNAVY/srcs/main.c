@@ -5,13 +5,15 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Wed Feb  1 09:47:09 2017 John Doe
-** Last update Wed Feb  1 19:17:53 2017 John Doe
+** Last update Fri Feb 10 09:18:10 2017 John Doe
 */
 
 #include "navy.h"
 
 int			main(int ac, char **av)
 {
+  if (strn_cmp(av[1], "-h", 2))
+    p_exit(USAGE, 0);
   if (ac == 2)
     {
       server_game(av[1]);
