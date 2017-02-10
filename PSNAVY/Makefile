@@ -5,7 +5,7 @@
 ## Login   <login_x@epitech.eu>
 ##
 ## Started on  Mon Jan 30 14:05:14 2017 John Doe
-## Last update Fri Feb 10 11:44:39 2017 John Doe
+## Last update Fri Feb 10 14:18:44 2017 clement cazaubon
 ##
 
 CC				= gcc
@@ -59,7 +59,7 @@ SRCS			= srcs/core/base.c							\
 						srcs/check_map/init.c					\
 						srcs/check_map/nb_ship.c
 MAIN			=	srcs/main.c
-
+MAINTTEST		=	srcs/main253.c
 TESTSRCS	= srcs/newcom/signauxbitwised.c \
 						srcs/newcom/receiver.c				\
 						srcs/newcom/sender.c					\
@@ -89,6 +89,6 @@ dbc:
 						$(CLG) $(DFLAGS) $(SRCS) $(MAIN) -o $(NAME)
 
 test:
-						$(CC) $(DFLAGS) $(SRCS) $(TESTSRCS) -o testcom
+						$(CC) $(DFLAGS) $(SRCS) $(MAINTTEST) -o testcom
 
 .PHONY: 		all clean fclean re

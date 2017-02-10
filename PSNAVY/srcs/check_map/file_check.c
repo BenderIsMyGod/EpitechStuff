@@ -5,7 +5,7 @@
 ** Login   <CAZAUB_C@epitech.net>
 **
 ** Started on  Mon Jan 30 10:33:59 2017 clement cazaubon
-** Last update Thu Feb  9 20:11:53 2017 clement cazaubon
+** Last update Fri Feb 10 14:27:19 2017 clement cazaubon
 */
 
 #include "navy.h"
@@ -51,5 +51,6 @@ int	check_f(char *name, t_map *map)
   if (rf(fd, map) == -1)
     return (errors("bad file formating", 84));
   close(fd);
+  affich_map(map);
   return (0);
 }

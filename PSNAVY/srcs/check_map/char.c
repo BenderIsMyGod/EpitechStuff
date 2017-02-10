@@ -5,10 +5,10 @@
 ** Login   <CAZAUB_C@epitech.net>
 ** 
 ** Started on  Mon Jan 30 14:04:38 2017 clement cazaubon
-** Last update Fri Feb 10 13:55:26 2017 clement cazaubon
+** Last update Fri Feb 10 14:31:51 2017 clement cazaubon
 */
 
-#include "map.h"
+#include "navy.h"
 
 int	is_number(char c)
 {
@@ -33,7 +33,7 @@ int	is_boat(char c)
   return (-1);
 }
 
-void	liner(char **str)
+void	liner(char str[8][8])
 {
   int	i;
   int	j;
@@ -46,6 +46,9 @@ void	liner(char **str)
       while (j < 8)
 	{
 	  p_printf(1, "%c", str[i][j]);
+	  if (j < 7)
+	    p_printf(1, " ");
+	  j++;
 	}
       p_printf(1, "\n");
       j = 0;

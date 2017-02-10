@@ -5,7 +5,7 @@
 ** Login   <CAZAUB_C@epitech.net>
 **
 ** Started on  Thu Feb  9 21:10:32 2017 clement cazaubon
-** Last update Fri Feb 10 14:03:05 2017 clement cazaubon
+** Last update Fri Feb 10 15:04:51 2017 clement cazaubon
 */
 
 #include "navy.h"
@@ -51,3 +51,15 @@ void	affich_map(t_map *map)
   liner(map->enemy_map);
   p_printf(1, "\n");
 }
+/*
+char	*check_hit(char *str, t_map *map)
+{
+  if (len(str) == 2)
+    {
+      if (map->map[str[1] - '0'][str[0] - 'A'] == '.')
+	map->map[str[1] - '0'][str[0] - 'A'] = 'X';
+      else
+	
+    }
+}
+*/

@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:23:40 2017 John Doe
-** Last update Fri Feb 10 11:38:50 2017 John Doe
+** Last update Fri Feb 10 14:03:30 2017 John Doe
 */
 
 #include "navy.h"
@@ -41,6 +41,7 @@ void		print_message(void)
 
 void		initcom(int signum, siginfo_t *info, void *context)
 {
+  p_printf(1, "waiting for ennemy connection...\n");
   if (signum == SIGUSR1)
     p_printf(1, "enemy connected\n\n");
   else if (signum == SIGUSR2)
@@ -81,7 +82,7 @@ int			receiver(void)
   sigemptyset(&init.sa_mask);
   cli.sa_flags = init.sa_flags = SA_SIGINFO;
   p_printf(1, "My pid:  %d\n", getpid());
-  p_printf(1, "waiting for ennemy connection...\n");
+  // p_printf(1, "waiting for ennemy connection...\n");
   sigaction(SIGUSR1, &init, NULL);
   sigaction(SIGUSR2, &init, NULL);
   while (read(0, &c, 1))

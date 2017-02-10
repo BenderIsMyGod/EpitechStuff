@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:24:32 2017 John Doe
-** Last update Fri Feb 10 10:44:35 2017 John Doe
+** Last update Fri Feb 10 14:29:33 2017 clement cazaubon
 */
 
 #ifndef NAVY_H_
@@ -26,7 +26,7 @@
 #include "strtowordtab.h"
 #include "map.h"
 
-#define FIRSTROWS		" |A B C D E F G H\n-+---------------"
+#define FIRSTROWS		" |A B C D E F G H\n-+---------------\n"
 
 // extern int client_pid;
 
