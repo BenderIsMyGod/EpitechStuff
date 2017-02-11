@@ -5,34 +5,44 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:23:53 2017 John Doe
-** Last update Fri Feb 10 11:38:37 2017 John Doe
+** Last update Sat Feb 11 10:30:07 2017 John Doe
 */
 
 #include "navy.h"
 #include <signal.h>
 
-int			sender(char *pid)
+int			isokcmd(char *cmd)
+{
+  int		i;
+  int		ok;
+  const char  *legitchar;
+
+  ok = i = 0;
+  legitchar = "ABCDEFGHabcdefgh12345678";
+  while (legitchar[i])
+    {
+      if (cmd[0] == legitchar[i])
+	ok++;
+      if (cmd[1] == legitchar[i])
+	ok++;
+      i++;
+    }
+  if (ok == 2)
+    return (1);
+  return (0);
+}
+int			sender(int pid)
 {
   char	*cmd;
-  unsigned int  message[4];
-  int			i;
 
-  i = 0;
-  message[0] = 0;
-  kill(my_atoi(pid), SIGUSR1);
-  p_printf(1, "My pid:  %d\n%s", getpid(), "attack: ");
+  p_printf(1, "\x1B[0mattack: ");
+  p_printf(1, "\x1B[3m");
   while ((cmd = get_next_line(0)))
 {
-      message[0] = cmd[0];
-      message[1] = cmd[1];
-      while (i != 2)
-	{
-    message[i] ^= END_TRANSMISSION(9, 10);
-	  send_message(message[i], my_atoi(pid));
-	  i = i + 1;
-	}
-      i = 0;
-      *message = 0;
+      if ((isokcmd(cmd)) && len(cmd) == 2)
+	send_message(cmd, pid);
+      else
+	p_printf(1, "wrong position\n");
       p_printf(1, "\x1B[0mattack: ");
       p_printf(1, "\x1B[3m");
       free(cmd);

@@ -10,102 +10,94 @@
 
 #include "navy.h"
 
-int client_pid = 0;
-
-int			send_coord(char *bfr, int ennemy_pid)
+void		pphandler(int signum, siginfo_t *info, void *context)
 {
-  int   b = 0;
-  const char	*a;
+  static int p1 = 0;
+  static int p2 = 0;
 
-  a = " ABCDEFGH";
-  while ((*a) && *a != bfr[0])
+  if (signum == SIGUSR1)
     {
-      while (b != my_atoi(bfr + 1))
-	{
-	  usleep(1);
-	  kill(ennemy_pid, SIGUSR2);
-	  b++;
-	}
-      usleep(1);
-      kill(ennemy_pid, SIGUSR1);
-      a++;
+      p1++;
+      kill(info->si_pid, SIGUSR2);
     }
+  else if (signum == SIGUSR2)
+    {
+      p2++;
+      kill(info->si_pid, SIGUSR1);
+    }
+}
+int				wait_forP2(struct sigaction *init)
+{
+  init->sa_sigaction = initcom;
+  sigemptyset(&init->sa_mask);
+  init->sa_flags = SA_SIGINFO;
+  p_printf(1, "my_pid: %d\n", getpid());
+  p_printf(1, "waiting for enemy connexion...\n");
+  sigaction(SIGUSR1, init, NULL);
+  sigaction(SIGUSR2, init, NULL);
+  pause();
   return (0);
 }
-int					servgame_loop(struct sigaction serv)
-{
-  char			*user_input;
 
-  while ((user_input = clean_args(get_next_line(0))))
-    {
-      send_coord(user_input, client_pid);
-      p_printf(1, "[%s]\n", user_input);
-      p_printf(1, "\x1B[0mattack: ");
-      p_printf(1, "\x1B[3m");
-      clean_free(user_input);
-      return (0);
-    }
-  sigaction(SIGUSR1, &serv, NULL);
-  sigaction(SIGUSR2, &serv, NULL);
-  sigaction(SIGQUIT, &serv, NULL);
+int				P1_game(const char *filename)
+{
+  t_map   *map;
+  struct sigaction init;
+
+  if ((map = malloc(sizeof(*map))) == NULL)
+    errors("Malloc error\n", 84);
+  check_f(filename, map);
+  wait_forP2(&init);
+  affich_map(map);
+  sender(proto.ptr.sender_pid);
+  // pause();
+  // receiver(init);
+  free(map);
   return (0);
 }
-int				server_game(const char *filename)
-{
-  struct 	sigaction serv;
-  char	**map;
 
-  map = get_map(filename);
-  invalid_pos(map);
-  initsig_server(&serv);
-  wait_forclient(serv);
-  p_printf(1, "my positions:\n\n");
-  p_printf(1, "ennemy's positions:\n");
-  print_awesome_emptymap();
-  while ((42))
-    {
-      servgame_loop(serv);
-      if (sigaction(SIGINT, &serv, NULL) == -1)
-	errors("./navy: Sigaction failed\n", 84);
-    }
-  freetab(map);
+int			wait_forP1(struct sigaction *init, int pid)
+{
+  proto.ptr.sender_pid = pid;
+  init->sa_sigaction = initcom;
+  sigemptyset(&init->sa_mask);
+  init->sa_flags = SA_SIGINFO;
+  p_printf(1, "my_pid: %d\n", getpid());
+  kill(pid, SIGUSR1);
+  sigaction(SIGUSR1, init, NULL);
+  sigaction(SIGUSR2, init, NULL);
+  pause();
   return (0);
 }
-int			cligame_loop(struct sigaction cli)
+int			gameplay(struct sigaction oldaction)
 {
-  char		*user_input;
+  struct sigaction pingpong;
 
-  p_printf(1, "waiting for ennemy's attack...\n");
-  while ((user_input = get_next_line(0)))
-    {
-      p_printf(1, "\x1B[0mattack: ");
-      p_printf(1, "\x1B[3m");
-      free(user_input);
-    }
-  sigaction(SIGUSR1, &cli, NULL);
-  sigaction(SIGUSR2, &cli, NULL);
-  sigaction(SIGQUIT, &cli, NULL);
+  pingpong.sa_sigaction = pphandler;
+  sigemptyset(&pingpong.sa_mask);
+  pingpong.sa_flags = SA_SIGINFO;
+  sigaction(SIGUSR1, &pingpong, NULL);
+  sigaction(SIGUSR2, &pingpong, NULL);
+  if (!(receiver(pingpong)))
+    pause();
+  if (!(sender(proto.ptr.sender_pid)))
+    pause();
   return (0);
 }
-int 		client_game(const char *filename, int serv_pid)
+int 		P2_game(const char *filename, int pid)
 {
-  struct sigaction cli;
-  char	**map;
+  t_map	*map;
+  struct sigaction init;
 
-  map = get_map(filename);
-  invalid_pos(map);
-  initsig_client(&cli);
-  wait_forserv(serv_pid, cli);
-  p_printf(1, "my positions:\n\n");
-  p_printf(1, "ennemy's positions:\n");
-  print_awesome_emptymap();
-  while ((42))
-    {
-      p_printf(1, "\nsignal received\n");
-      cligame_loop(cli);
-      if (sigaction(SIGINT, &cli, NULL) == -1)
-	errors("./navy: Sigaction failed\n", 84);
-    }
-  freetab(map);
+  if ((map = malloc(sizeof(*map))) == NULL)
+    errors("Malloc error\n", 84);
+  check_f(filename, map);
+  wait_forP1(&init, pid);
+  proto.ptr.map = map;
+  affich_map(proto.ptr.map);
+  p_printf(1, "Waiting for enemy's attack...");
+  // gameplay(init);
+  receiver(init);
+  free(map);
   return (0);
 }

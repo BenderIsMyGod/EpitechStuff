@@ -5,11 +5,11 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan 29 10:13:56 2017 John Doe
-** Last update Wed Feb  1 21:01:08 2017 John Doe
+** Last update Sat Feb 11 09:40:56 2017 John Doe
 */
 
 #ifndef READ_SIZE
-# define READ_SIZE (30)
+# define READ_SIZE (1)
 #endif
 
 #ifndef GET_NEXT_LINE_H_

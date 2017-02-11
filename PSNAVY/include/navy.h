@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:24:32 2017 John Doe
-** Last update Fri Feb 10 14:29:33 2017 clement cazaubon
+** Last update Sat Feb 11 10:56:49 2017 John Doe
 */
 
 #ifndef NAVY_H_
@@ -26,20 +26,25 @@
 #include "strtowordtab.h"
 #include "map.h"
 
-#define FIRSTROWS		" |A B C D E F G H\n-+---------------\n"
-
-// extern int client_pid;
-
+/* ********************************* */
 /*
-** Tests sources will soon be merged
-** if no bug spoted
+** communication protocol functions
+** and structures.
 */
 #define END_TRANSMISSION(a, b) ((1 << a) | (1 << b))
+
+typedef struct s_sender {
+  int		k;
+  const char *bfr;
+  unsigned int msg[4];
+  int		i;
+}							t_sender;
 
 struct data {
   unsigned int message;
   int  	sender_pid;
-  char   bfr[1000];
+  char   bfr[10];
+  t_map  *map;
 };
 
 struct count {
@@ -50,12 +55,15 @@ struct count {
 
 struct count proto;
 
-int					receiver(void);
-int					sender(char *pid);
+int					receiver(struct sigaction oldact);
+int					sender(int pid);
+int					isokcmd(char *cmd);
+void 				swap(char *xp, char *yp);
 void				receive_msg(int signum, siginfo_t *info, void *context);
-void				send_message(unsigned int message, int pid);
+void				send_message(char *message, int pid);
 void				print_message(void);
 const char 	*byte_to_binary(unsigned int msg);
+
 /*
 ***************************************************
 ***************************************************
@@ -64,36 +72,8 @@ const char 	*byte_to_binary(unsigned int msg);
 ** Game loops
 */
 int			start(const char *pathname);
-int			server_game(const char *filename);
-int 		client_game(const char *filename, int serv_pid);
-/*
-************
-*/
-/*
-** Map opening and parsing functions
-*/
-int			open_map(const char *name);
-int			check_map(const char *path);
-int			invalid_char(char *buffer);
-int			invalid_pos(char **buffer);
-int			checkargs(char *buffer);
-char		**map_tobuffer(const char *name);
-char		**get_map(const char *pathname);
-char		**put_hits(char **map, char *coord);
-void		print_position(char **map);
-void		print_awesome_emptymap(void);
-/* ************************** */
-/*
-** Sigaction aka com protocol
-*/
-void		handler_client(int signum, siginfo_t *ptr, void *bfr);
-void		handler_server(int signum, siginfo_t *ptr, void *bfr);
-void		send_okto_serv(int pid, struct sigaction cli);
-void		initsig_server(struct sigaction *serv);
-void		initsig_client(struct sigaction *client);
-void		wait_forclient(struct sigaction serv);
-void		wait_forserv(int pid, struct sigaction cli);
-/*
-****************************
-*/
+int			P1_game(const char *filename);
+int 		P2_game(const char *filename, int serv_pid);
+void		initcom(int signum, siginfo_t *info, void *context);
+
 #endif

@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:23:24 2017 John Doe
-** Last update Fri Feb 10 09:47:45 2017 John Doe
+** Last update Sat Feb 11 10:13:28 2017 John Doe
 */
 
 #include "navy.h"
@@ -25,40 +25,37 @@ const char 		*byte_to_binary(unsigned int x)
     }
   return (b);
 }
-void					send_message(unsigned int message, int pid)
+void					init_list(t_sender *list, char *message)
 {
-  int					k;
-  const char *bfr;
-
-  k = 15;
-  bfr = byte_to_binary(message);
-  while (k != -1)
-    {
-      if (bfr[k] == '0')
-	{
-	  usleep(1000);
-	  kill(pid, SIGUSR1);
-	}
-      else if (bfr[k] == '1')
-	{
-	  usleep(1000);
-	  kill(pid, SIGUSR2);
-	}
-      k--;
-    }
+  list->i = 0;
+  list->k = 15;
+  list->msg[0] = message[0];
+  list->msg[1] = message[1];
 }
-
-unsigned int	*pack_message(char *msg)
+void					send_message(char *message, int pid)
 {
-  unsigned int *message;
+  t_sender		list;
 
-  if ((message = malloc(sizeof(*message) * len(msg) + 1)) == NULL)
-    _exit (84);
-  while (msg)
-    {
-      *message = *msg;
-      msg++;
+  init_list(&list, message);
+  while (list.i != 2)
+{
+      list.msg[list.i] ^= END_TRANSMISSION(9, 10);
+      list.bfr = byte_to_binary(list.msg[list.i]);
+      while (list.k != -1)
+	{
+	  if (list.bfr[list.k] == '0')
+	    {
+	      usleep(1000);
+	      kill(pid, SIGUSR1);
+	    }
+	  else if (list.bfr[list.k] == '1')
+	    {
+	      usleep(1000);
+	      kill(pid, SIGUSR2);
+	    }
+	  list.k--;
+	}
+      list.k = 15;
+      list.i = list.i + 1;
     }
-  message[len(msg) + 1] ^= END_TRANSMISSION(9, 10);
-  return (message);
 }

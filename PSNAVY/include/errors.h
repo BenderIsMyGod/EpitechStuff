@@ -1,11 +1,11 @@
 /*
-** errors.h for Libfunk in /home/bender/Snippets/libfunk/include/
+** errors.h for PSU_2016_navy in /home/bender/Repo/PSU_2016_navy/include/
 **
 ** Made by John Doe
 ** Login   <login_x@epitech.eu>
 **
-** Started on  Sun Jan 29 10:13:45 2017 John Doe
-** Last update Wed Feb  1 21:01:23 2017 John Doe
+** Started on  Sat Feb 11 10:59:59 2017 John Doe
+** Last update Sat Feb 11 11:00:18 2017 John Doe
 */
 
 #ifndef ERRORS_H_
@@ -18,9 +18,6 @@
 #define FDERR 	"Bad file descriptor"
 #define NOEXST	": No such file or directory\n"
 #define NOEXEC  ": Command not found.\n"
-#define SEGFLT  "Segmentation fault (core dumped)\n"
-#define FPERR   "Floating exception (core dumped)\n"
-#define NOPERM	": Permission denied.\n"
 /*
 ** got an error? an error message ?
 **   an exit code... ???
