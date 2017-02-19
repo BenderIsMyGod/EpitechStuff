@@ -5,16 +5,11 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan 29 10:14:11 2017 John Doe
-** Last update Wed Feb  1 21:00:42 2017 John Doe
+** Last update Sun Feb 19 08:51:36 2017 John Doe
 */
 
 #ifndef STRTOWORDTAB_H_
 # define STRTOWORDTAB_H_
-
-#include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <string.h>
 
 typedef struct s_count {
   int		i;

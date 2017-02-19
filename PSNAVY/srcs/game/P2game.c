@@ -9,6 +9,7 @@
 */
 
 #include "navy.h"
+#include <stdlib.h>
 
 /*
 ** this function wait for
@@ -17,17 +18,14 @@
 */
 int			wait_forP1(struct sigaction *init, int pid)
 {
-  proto.ptr.sender_pid = pid;
   init->sa_sigaction = initcom;
   sigemptyset(&init->sa_mask);
   init->sa_flags = SA_SIGINFO;
   p_printf(1, "my_pid: %d\n", getpid());
-  kill(pid, SIGUSR1);
   sigaction(SIGUSR1, init, NULL);
   sigaction(SIGUSR2, init, NULL);
+  kill(pid, SIGUSR1);
   pause();
-  affich_map(proto.ptr.map);
-  p_printf(1, "Waiting for enemy's attack...\n");
   return (1);
 }
 /*
@@ -42,17 +40,17 @@ int 		P2_game(const char *filename, int pid)
   struct sigaction init;
 
   if ((map = malloc(sizeof(*map))) == NULL)
-    errors("Malloc error\n", 84);
-  check_f(filename, map);
+    return (-1);
+  if (check_f(filename, map) == -1)
+    return (-1);
   proto.ptr.map = map;
   proto.turn = 0;
+  proto.oldact = &init;
+  proto.ptr.sender_pid = pid;
   if (wait_forP1(&init, pid))
     {
-      while (check_win_loose(proto.ptr.map->map) != 1)
-	{
-	  proto.oldact = &init;
-	  receiver(init);
-	}
+      affich_map(proto.ptr.map);
+      M_loop();
     }
   free(map);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:22:48 2017 John Doe
-** Last update Fri Feb 10 09:22:56 2017 John Doe
+** Last update Sun Feb 19 08:22:23 2017 John Doe
 */
 
 #include "base.h"
@@ -34,7 +34,7 @@ char				*my_strdup(const char *src)
   i = 0;
   size = len(src);
   if ((buffer = malloc(size + 1)) == NULL)
-    errors(strerror(errno), 84);
+    return (NULL);
   while (src[i] != '\0')
     {
       buffer[i] = src[i];
@@ -53,7 +53,7 @@ char				*my_strcat(char *dest, const char *src)
   if ((!(src)) || (!(dest)))
     return (NULL);
   if ((buffer = malloc(sizeof(*buffer) * ((len(dest) + len(src)) + 1))) == NULL)
-    errors(strerror(errno), 84);
+    return (NULL);
   buffer = my_strcpy(dest, buffer);
   j = len(buffer);
   while (src[i])

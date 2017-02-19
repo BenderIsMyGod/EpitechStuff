@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan 29 10:13:19 2017 John Doe
-** Last update Wed Feb  1 21:00:51 2017 John Doe
+** Last update Sun Feb 19 08:41:29 2017 John Doe
 */
 
 #ifndef PRINTF_H_
@@ -13,7 +13,6 @@
 
 #include <stdarg.h>
 #include "base.h"
-#include "errors.h"
 
 int				flag_match(const char c);
 int				flg_d(va_list list, int fd);

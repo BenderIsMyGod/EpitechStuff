@@ -5,7 +5,7 @@
 ** Login   <CAZAUB_C@epitech.net>
 **
 ** Started on  Thu Feb  9 21:10:32 2017 clement cazaubon
-** Last update Wed Feb 15 10:18:52 2017 John Doe
+** Last update Sat Feb 18 13:24:25 2017 John Doe
 */
 
 #include "navy.h"
@@ -69,10 +69,10 @@ void	affich_map(t_map *map)
 ** return a string containing
 ** the result.
 */
-const char	*check_hit(t_map *map)
+const char	*check_hit(t_map *map, char *str)
 {
-  if (map->map[proto.ptr.bfr[1] - '1'][proto.ptr.bfr[0] - 'A'] == '.' ||
-      map->map[proto.ptr.bfr[1] - '1'][proto.ptr.bfr[0] - 'A'] == 'o')
+  if (map->map[str[1] - '1'][str[0] - 'A'] == '.' ||
+      map->map[str[1] - '1'][str[0] - 'A'] == 'o')
     return ("MISS");
   return ("HIT");
 }
@@ -80,20 +80,20 @@ const char	*check_hit(t_map *map)
 ** update map according
 ** to the below function result.
 */
-void	update_map(const char *str, t_map *map, int player)
+void	update_map(const char *str, t_map *map, int player, char *st)
 {
   if (player == 1)
     {
       if (str[0] == 'M')
-	map->map[proto.ptr.bfr[1] - '1'][proto.ptr.bfr[0] - 'A'] = 'o';
+	map->map[st[1] - '1'][st[0] - 'A'] = 'o';
       else if (str[0] == 'H')
-	map->map[proto.ptr.bfr[1] - '1'][proto.ptr.bfr[0] - 'A'] = 'x';
+	map->map[st[1] - '1'][st[0] - 'A'] = 'x';
     }
   if (player == 2)
     {
       if (str[0] == 'M')
-	map->enemy_map[proto.ptr.bfr[1] - '1'][proto.ptr.bfr[0] - 'A'] = 'o';
+	map->enemy_map[st[1] - '1'][st[0] - 'A'] = 'o';
       else if (str[0] == 'H')
-	map->enemy_map[proto.ptr.bfr[1] - '1'][proto.ptr.bfr[0] - 'A'] = 'x';
+	map->enemy_map[st[1] - '1'][st[0] - 'A'] = 'x';
     }
 }

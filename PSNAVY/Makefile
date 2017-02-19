@@ -5,7 +5,7 @@
 ## Login   <login_x@epitech.eu>
 ##
 ## Started on  Mon Jan 30 14:05:14 2017 John Doe
-## Last update Wed Feb 15 08:57:53 2017 John Doe
+## Last update Sun Feb 19 08:42:24 2017 John Doe
 ##
 
 CC				= gcc
@@ -17,14 +17,14 @@ RM				= @rm -rf
 PRINT     = @echo -e "\n\e[1m****\n\t=>Building NAVY suceed\n\t\tEnjoy ;)\n\
 						****\n\e[0m"
 
-CFLAGS		= -Wall -Werror -Wpedantic -std=gnu99
+CFLAGS		= -Wall -Werror -Wpedantic -std=gnu99 -O2
 CFLAGS		+= -I./include/
 #############################################
 ## The following compilations flags are based
 ## on "Cinglis" "c style best practice" guide
 ##  => https://github.com/mcinglis/c-style <=
 #############################################
-DFLAGS		= -g2 -Wall -Wpedantic -std=gnu99 \
+DFLAGS		= -g2 -Wall -Wpedantic -std=gnu99 -Wfatal-errors \
           	-Wformat=2 -Wno-unused-parameter -Wshadow \
           	-Wwrite-strings -Wstrict-prototypes -Wold-style-definition \
           	-Wredundant-decls -Wnested-externs \
@@ -37,7 +37,6 @@ NAME			= navy
 
 SRCS			= srcs/core/base.c						  \
 						srcs/core/base2.c						  \
-						srcs/core/error.c						  \
 						srcs/core/flag_match.c			  \
 						srcs/core/flgs.c						  \
 						srcs/core/get_next_line.c		  \
@@ -48,6 +47,7 @@ SRCS			= srcs/core/base.c						  \
 						srcs/game/P1game.c					  \
 						srcs/game/P2game.c						\
 						srcs/game/pingpong.c          \
+						srcs/game/M_loop.c						\
 						srcs/map/char.c					      \
 						srcs/map/check_fight.c	      \
 						srcs/map/check_location.c		  \
@@ -59,11 +59,6 @@ SRCS			= srcs/core/base.c						  \
 						srcs/newcom/receiver.c				\
 						srcs/newcom/sender.c
 MAIN			=	srcs/main.c
-
-GRAPHTEST	=	srcs/main253.c
-
-TESTSRCS	= srcs/maintest.c
-
 
 all:				$(NAME)
 
@@ -85,10 +80,5 @@ dbg:
 dbc:
 						@echo -e "\n\nD_BUG mode ON (with clang)\n\n"
 						$(CLG) $(DFLAGS) $(SRCS) $(MAIN) -o $(NAME)
-
-testcom:
-						$(CC) $(DFLAGS) $(SRCS) $(TESTSRCS) -o testcom
-testmap:
-						$(CC) $(DFLAGS) $(SRCS) $(GRAPHTEST) -o testmap
 
 .PHONY: 		all clean fclean re

@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sat Feb 11 11:53:39 2017 John Doe
-** Last update Wed Feb 15 10:21:31 2017 John Doe
+** Last update Fri Feb 17 19:43:51 2017 John Doe
 */
 
 #include "navy.h"
@@ -26,12 +26,14 @@ void			initcom(int signum, siginfo_t *info, void *context)
 	  proto.turn += 1;
 	  kill(info->si_pid, SIGUSR2);
 	}
+      proto.turn = 1;
     }
   else if (signum == SIGUSR2)
     {
       proto.turn += 1;
       if (proto.turn == 1)
 	p_printf(1, "successfully connected\n\n");
+      proto.turn = 0;
     }
   proto.ptr.sender_pid = info->si_pid;
 }
@@ -51,9 +53,18 @@ void		pphandler(int signum, siginfo_t *info, void *context)
     p1++;
   else if (signum == SIGUSR2)
     p2++;
-  if (p1 + p2 == 20)
+}
+
+void	trad_resp(const char *resp)
+{
+  if (resp[0] == 'H')
     {
-      // p_printf(1, "%s\n", "21 signaux reçus\n");
-      // receiver(*proto.oldact);
+      proto.ptr.resp[0] = 'H';
+      proto.ptr.resp[1] = '1';
+    }
+  else if (resp[0] == 'M')
+    {
+    proto.ptr.resp[0] = 'M';
+    proto.ptr.resp[1] = '1';
     }
 }

@@ -5,10 +5,11 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sat Feb 11 11:44:49 2017 John Doe
-** Last update Wed Feb 15 09:56:43 2017 John Doe
+** Last update Sun Feb 19 08:49:27 2017 John Doe
 */
 
 #include "navy.h"
+#include <stdlib.h>
 
 /*
 ** this function wait for
@@ -25,7 +26,6 @@ int				wait_forP2(struct sigaction *init)
   sigaction(SIGUSR1, init, NULL);
   sigaction(SIGUSR2, init, NULL);
   pause();
-  affich_map(proto.ptr.map);
   return (1);
 }
 /*
@@ -40,14 +40,17 @@ int				P1_game(const char *filename)
   struct sigaction init;
 
   if ((map = malloc(sizeof(*map))) == NULL)
-    errors("Malloc error\n", 84);
-  check_f(filename, map);
+    return (-1);
+  if (check_f(filename, map) == -1)
+    return (-1);
   proto.ptr.map = map;
+  proto.oldact = &init;
   if (wait_forP2(&init))
     {
-      proto.oldact = &init;
+      usleep(900000);
       proto.turn = 1;
-      sender(proto.ptr.sender_pid, init);
+      affich_map(proto.ptr.map);
+      M_loop();
     }
   free(map);
   return (0);

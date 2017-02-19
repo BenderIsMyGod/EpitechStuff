@@ -5,10 +5,12 @@
 ** Login   <CAZAUB_C@epitech.net>
 **
 ** Started on  Mon Jan 30 10:33:59 2017 clement cazaubon
-** Last update Fri Feb 10 15:45:27 2017 John Doe
+** Last update Sun Feb 19 08:50:44 2017 John Doe
 */
 
 #include "navy.h"
+#include <fcntl.h>
+#include <stdlib.h>
 
 int	basic_analitics(char *str)
 {
@@ -47,9 +49,9 @@ int	check_f(const char *filename, t_map *map)
   int	fd;
 
   if ((fd = open(filename, O_RDONLY)) == -1)
-    errors("No such file or directory\n", 84);
+    return (-1);
   if (rf(fd, map) == -1)
-    return (errors("bad file formating", 84));
+    return (-1);
   close(fd);
   return (0);
 }

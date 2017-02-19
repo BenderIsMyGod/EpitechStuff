@@ -5,7 +5,7 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sat Feb 11 11:00:59 2017 John Doe
-** Last update Wed Feb 15 10:23:17 2017 John Doe
+** Last update Sun Feb 19 07:26:48 2017 John Doe
 */
 
 #include "navy.h"
@@ -30,18 +30,6 @@ void swap(char *xp, char *yp)
     *xp ^= *yp;
 }
 /*
-** print received message
-** and update/printing map
-** accordingly.
-*/
-int		print_message(void)
-{
-  p_printf(1, "%s: %s\n", proto.ptr.bfr, check_hit(proto.ptr.map));
-  update_map(check_hit(proto.ptr.map), proto.ptr.map, 1);
-  affich_map(proto.ptr.map);
-  return (0);
-}
-/*
 ** Analyse struct counters
 ** to stop reception
 ** when valid message received
@@ -55,16 +43,8 @@ int		check_message(void)
 	swap(&proto.ptr.bfr[0], &proto.ptr.bfr[1]);
       if ((is_lwcse(proto.ptr.bfr[0])))
 	proto.ptr.bfr[0] -= 32;
-      if ((isokcmd(proto.ptr.bfr)))
-	{
-    print_message();
-    sender(proto.ptr.sender_pid, *proto.oldact);
-	  send_message(check_hit(proto.ptr.map), proto.ptr.sender_pid, \
-		       *proto.oldact);
-	  return (0);
-	}
-      proto.ptr.bfr[0] = '\0';
       proto.count = 0;
+      return (1);
     }
   return (0);
 }
@@ -91,8 +71,7 @@ void		receive_msg(int signum, siginfo_t *info, void *context)
   if ((proto.pos == 10) && (proto.ptr.message & END_TRANSMISSION(9, 10)))
     {
       proto.ptr.bfr[proto.count++] = proto.ptr.message;
-      check_message();
-      proto.ptr.message = '\0';
+      proto.ptr.message = 0;
       proto.pos = 0;
     }
 }
@@ -107,16 +86,13 @@ int			receiver(struct sigaction oldact)
 {
   struct sigaction cli;
 
+  proto.ptr.bfr[0] = '\0';
   cli.sa_sigaction = receive_msg;
   sigemptyset(&cli.sa_mask);
   cli.sa_flags = SA_SIGINFO;
-  sigaction(SIGUSR1, &oldact, NULL);
-  sigaction(SIGUSR2, &oldact, NULL);
-  while (proto.count != 3)
-    {
-      sigaction(SIGUSR1, &cli, &oldact);
-      sigaction(SIGUSR2, &cli, &oldact);
-      pause();
-    }
-  return (0);
+  sigaction(SIGUSR1, &cli, &oldact);
+  sigaction(SIGUSR2, &cli, &oldact);
+  while (!check_message())
+    pause();
+  return (1);
 }

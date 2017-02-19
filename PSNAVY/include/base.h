@@ -5,15 +5,13 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Sun Jan 29 10:13:32 2017 John Doe
-** Last update Fri Feb 10 10:25:27 2017 John Doe
+** Last update Sun Feb 19 08:39:51 2017 John Doe
 */
 
 #ifndef BASE_H_
 # define BASE_H_
 
-#include "errors.h"
 #include <unistd.h>
-#include <string.h>
 
 /*
 ** string.c aka string.h
@@ -23,6 +21,7 @@ int			strn_cmp(const char *s1, const char *s2, size_t n);
 char		*my_strcat(char *dest, const char *src);
 char		*my_strdup(const char *src);
 char		*my_strcatvs(char *dest, const char *src);
+char		*my_strcpy(const char *src, char *dest);
 
 /*
 ** stdlib adapted

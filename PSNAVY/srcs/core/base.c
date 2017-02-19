@@ -5,13 +5,12 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:19:59 2017 John Doe
-** Last update Fri Feb 10 09:20:12 2017 John Doe
+** Last update Sun Feb 19 08:40:21 2017 John Doe
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "errors.h"
 #include "base.h"
 
 int					pprint(const char *str, int fd)
@@ -20,14 +19,14 @@ int					pprint(const char *str, int fd)
 
   wr = 0;
   if ((wr = write(fd, str, len(str))) == -1)
-    errors(FDERR, 84);
+    return (84);
   return (0);
 }
 
 char			*my_malloc(char *str, size_t len)
 {
   if ((str = malloc(sizeof(*str) * len)) == NULL)
-    errors(strerror(errno), 84);
+    return (NULL);
   return (str);
 }
 char			**freetab(char **ptr)

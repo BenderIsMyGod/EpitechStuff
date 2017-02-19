@@ -5,11 +5,10 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:23:02 2017 John Doe
-** Last update Fri Feb 10 09:23:09 2017 John Doe
+** Last update Sun Feb 19 08:43:26 2017 John Doe
 */
 
 #include "base.h"
-#include "errors.h"
 #include "strtowordtab.h"
 
 #include <stdlib.h>
@@ -59,7 +58,7 @@ int		init_buffer(char *str, const char *delim, char ***tab)
       i++;
     }
   if ((*tab = malloc(sizeof(char*) * argss)) == NULL)
-    errors(strerror(errno), 84);
+    return (84);
   return (argss);
 }
 
@@ -90,7 +89,7 @@ char		**strto_wordtab(char *str, const char *delim)
       move_str(&count.i, &count.linesize, str, delim);
       if ((wordtab[count.line] = malloc(sizeof(char) \
 					* (count.linesize + 1))) == NULL)
-	errors(strerror(errno), 84);
+	return (NULL);
       while (str[count.i] != 0 && check_words(str[count.i], delim) != 0)
 	if (str[count.i++] != '\0')
 	    wordtab[count.line][count.j++] = str[count.i - 1];

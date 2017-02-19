@@ -5,22 +5,16 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:24:32 2017 John Doe
-** Last update Wed Feb 15 10:22:48 2017 John Doe
+** Last update Sun Feb 19 08:46:02 2017 John Doe
 */
 
 #ifndef NAVY_H_
 # define NAVY_H_
 
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <signal.h>
 
 #include "usage.h"
 #include "base.h"
-#include "errors.h"
 #include "get_next_line.h"
 #include "printf.h"
 #include "strtowordtab.h"
@@ -34,23 +28,25 @@
 #define END_TRANSMISSION(a, b) ((1 << a) | (1 << b))
 
 typedef struct s_sender {
-  int		k;
-  int		i;
-  unsigned int msg[4];
-  const char *bfr;
+  int						k;
+  int						i;
+  unsigned int	msg[4];
+  const char 		*bfr;
 }							t_sender;
 
 struct data {
-  unsigned int message;
-  int  	sender_pid;
-  char   bfr[10];
-  t_map  *map;
+  unsigned int	message;
+  int  					sender_pid;
+  char   				bfr[4];
+  char					*bfrcpy;
+  char					resp[4];
+  t_map  				*map;
 };
 
 struct count {
-  int	turn;
-  int pos;
-  int count;
+  int					turn;
+  int 				pos;
+  int 				count;
   struct data ptr;
   struct sigaction *oldact;
 };
@@ -62,10 +58,12 @@ int					sender(int pid, struct sigaction oldact);
 int					isokcmd(char *cmd);
 int					check_message(void);
 int					print_message(void);
-const char 	*byte_to_binary(unsigned int msg);
+int					waitfor_response(void);
+const char	*byte_to_binary(unsigned int msg);
+void				trad_resp(const char *resp);
 void 				swap(char *xp, char *yp);
-void				receive_msg(int signum, siginfo_t *info, void *context);
-void					send_message(const char *message, int pid, \
+void			  receive_msg(int signum, siginfo_t *info, void *context);
+void				send_message(const char *message, int pid, \
 						     struct sigaction oldact);
 
 /*
@@ -75,10 +73,12 @@ void					send_message(const char *message, int pid, \
 /*
 ** Game loops
 */
-int			start(const char *pathname);
-int			P1_game(const char *filename);
-int 		P2_game(const char *filename, int serv_pid);
-void		initcom(int signum, siginfo_t *info, void *context);
-void		pphandler(int signum, siginfo_t *info, void *context);
+int					start(const char *pathname);
+int					P1_game(const char *filename);
+int 				P2_game(const char *filename, int serv_pid);
+int					M_loop(void);
+const char 	*check_resp(char *resp);
+void				initcom(int signum, siginfo_t *info, void *context);
+void				pphandler(int signum, siginfo_t *info, void *context);
 
 #endif

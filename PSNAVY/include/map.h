@@ -5,7 +5,7 @@
 ** Login   <CAZAUB_C@epitech.net>
 **
 ** Started on  Mon Jan 30 10:37:09 2017 clement cazaubon
-** Last update Wed Feb 15 10:19:32 2017 John Doe
+** Last update Sat Feb 18 13:24:37 2017 John Doe
 */
 
 #ifndef MAP_H_
@@ -39,8 +39,8 @@ void	liner(char str[8][8]);
 int					check_valid_pos(char *str);
 int					check_win_loose(char str[8][8]);
 void				affich_map(t_map *map);
-const char	*check_hit(t_map *map);
-void				update_map(const char *str, t_map *map, int player);
+const char	*check_hit(t_map *map, char *str);
+void				update_map(const char *str, t_map *map, int player, char *st);
 /*
 ** check_location.c functions
 */

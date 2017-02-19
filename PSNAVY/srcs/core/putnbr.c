@@ -5,20 +5,18 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:22:01 2017 John Doe
-** Last update Fri Feb 10 09:22:07 2017 John Doe
+** Last update Sun Feb 19 08:43:13 2017 John Doe
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
-
-#include "errors.h"
 #include "base.h"
 
 int				p_putnbr(long nb, int fd)
 {
   if (nb >= LONG_MAX || nb <= LONG_MIN)
-    errors("putnbr: illegal value\n", 84);
+    return (84);
   if (nb < 0)
     {
       pprint("-", fd);

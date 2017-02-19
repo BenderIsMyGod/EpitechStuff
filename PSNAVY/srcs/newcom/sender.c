@@ -5,11 +5,11 @@
 ** Login   <login_x@epitech.eu>
 **
 ** Started on  Fri Feb 10 09:23:53 2017 John Doe
-** Last update Wed Feb 15 09:58:37 2017 John Doe
+** Last update Sun Feb 19 08:51:00 2017 John Doe
 */
 
 #include "navy.h"
-#include <signal.h>
+#include <stdlib.h>
 
 /*
 ** Parse user input expression
@@ -52,8 +52,9 @@ int			sender(int pid, struct sigaction oldact)
 {
       if ((isokcmd(cmd)) && len(cmd) == 2)
 	{
-    send_message((const char*)cmd, pid, oldact);
-    return (1);
+	  proto.ptr.bfrcpy = my_strdup(cmd);
+    send_message(cmd, pid, oldact);
+	  return (1);
 	}
       else
 	p_printf(1, "wrong position\n");
